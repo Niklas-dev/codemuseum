@@ -17,4 +17,4 @@ migrate(drizzle(migrationClient), migrationConfig);
 const queryClient = postgres(
   "postgres://postgres:postgres@192.168.178.50:5432/codemuseum-db"
 );
-const db: PostgresJsDatabase = drizzle(queryClient);
+export const db: PostgresJsDatabase = drizzle(queryClient);
