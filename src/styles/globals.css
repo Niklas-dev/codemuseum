@@ -9,3 +9,24 @@
   background-repeat: repeat; /* Repeat the pattern */
   background-attachment: fixed;
 }
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #1a1a1a #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+}

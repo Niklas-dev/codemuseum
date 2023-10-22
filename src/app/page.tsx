@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 
 import LottieJson from "../../public/landing_anim.json";
 import LottiePlayer from "@/components/LottiePlayer";
+import Image from "next/image";
+import CodeBlock from "@/components/ClientCodeBlock";
+import { dracula } from "react-code-blocks";
+import CodeSampleShowcase from "@/components/CodeSampleShowcase";
 
 export const metadata: Metadata = {
   title: "CodeMuseum",
@@ -13,10 +17,10 @@ export default async function Home() {
   const session = await getAuthSession();
   return (
     <>
-      <main className="flex flex-col min-h-screen px-10 md:px-12 lg:px-20 justify-center ">
-        <div className="flex flex-row ">
+      <main className="flex flex-col min-h-screen px-10 md:px-12 lg:px-20 justify-start z-20">
+        <div className="flex flex-row items-center h-screen mt-20 lg:mt-14 xl:mt-4  ">
           <div className="mb-40 flex flex-col gap-6">
-            <h1 className="text-3xl sm:text-4xl  lg:text-5xl xl:text-7xl font-semibold text-center md:text-start">
+            <h1 className="text-3xl sm:text-4xl  lg:text-5xl xl:text-6xl 2xl:7xl font-semibold text-center md:text-start">
               Discover {"<Code />"} in it&apos;s <br /> best, most beautiful
               form
             </h1>
@@ -47,14 +51,17 @@ export default async function Home() {
             />
           </div>
         </div>
+        <div className="flex flex-col items-center ">
+          <CodeSampleShowcase />
+        </div>
       </main>
-      <div className="fixed -bottom-64 right-56 blur-[150px] z-10">
+      <div className="fixed -bottom-64 right-56 blur-[150px] z-10 pointer-events-none">
         <div className="h-[30rem] w-[50rem] bg-violet-700 rounded-full opacity-40"></div>
       </div>
-      <div className="fixed -bottom-56 -right-36 blur-[150px] z-10">
+      <div className="fixed -bottom-56 -right-36 blur-[150px] z-10 pointer-events-none">
         <div className="h-[35rem] w-[35rem] bg-teal-500 rounded-full opacity-60"></div>
       </div>
-      <div className="fixed bottom-56 -right-36 blur-[150px] z-10">
+      <div className="fixed bottom-56 -right-36 blur-[150px] z-10 pointer-events-none">
         <div className="h-[25rem] w-[25rem] bg-teal-500 rounded-full opacity-60"></div>
       </div>
     </>
