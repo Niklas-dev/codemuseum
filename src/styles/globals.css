@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.noise-background {
+  opacity: 0.05;
+  background-image: url("../../public/noise.svg");
+
+  background-repeat: repeat; /* Repeat the pattern */
+  background-attachment: fixed;
+}
