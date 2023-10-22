@@ -3,10 +3,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import LottieJson from "../../public/landing_anim.json";
+
+import LottieLoveJson from "../../public/we_love_code.json";
 import LottiePlayer from "@/components/LottiePlayer";
-import Image from "next/image";
-import CodeBlock from "@/components/ClientCodeBlock";
-import { dracula } from "react-code-blocks";
+
 import CodeSampleShowcase from "@/components/CodeSampleShowcase";
 
 export const metadata: Metadata = {
@@ -46,13 +46,27 @@ export default async function Home() {
           </div>
           <div className="ml-56 z-20 hidden lg:block">
             <LottiePlayer
+              speed={1}
               style="lg:w-[350px] lg:h-[350px] xl:w-[450px] xl:h-[450px]"
               json={LottieJson}
             />
           </div>
         </div>
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col items-center gap-72">
           <CodeSampleShowcase />
+          <div className=" h-96 w-full flex flex-col items-center">
+            <h1 className="text-center text-4xl font-medium whitespace-nowrap w-fit">
+              We ❤️ Code. <br /> Join an aswesome community of other code
+              creators.
+            </h1>
+            <p className="text-xl text-center font-light">
+              We love Code and thats why we offer an platform to quickly <br />{" "}
+              share, store and appreciate code of others. <br />
+              Simple, fast and robust.
+            </p>
+
+            <LottiePlayer speed={0.2} style="" json={LottieLoveJson} />
+          </div>
         </div>
       </main>
       <div className="fixed -bottom-64 right-56 blur-[150px] z-10 pointer-events-none">

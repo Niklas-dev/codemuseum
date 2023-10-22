@@ -2,7 +2,7 @@
 import LottiePlayer from "@/components/LottiePlayer";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import LottieJson from "../../../../public/login_anim2.json";
+import LottieJson from "../../../../public/login_anim.json";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -25,6 +25,7 @@ export default function Page() {
     <main className="flex flex-col items-center">
       <div className="pointer-events-none">
         <LottiePlayer
+          speed={1}
           style="lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px]"
           json={LottieJson}
         />
