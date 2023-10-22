@@ -3,6 +3,7 @@ import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
 
+/*
 const migrationConfig: MigrationConfig = {
   migrationsFolder: __dirname + "/migrations",
 };
@@ -13,6 +14,7 @@ const migrationClient = postgres(
 );
 
 migrate(drizzle(migrationClient), migrationConfig);
+*/
 
 const queryClient = postgres(
   "postgres://postgres:postgres@192.168.178.50:5432/codemuseum-db"
