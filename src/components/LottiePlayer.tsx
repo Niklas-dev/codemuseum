@@ -3,20 +3,10 @@ import Lottie from "react-lottie-player";
 
 export default function LottiePlayer({
   json,
-  height,
-  width,
+  style,
 }: {
   json: object;
-  height: number;
-  width: number;
+  style: string;
 }) {
-  return (
-    <Lottie
-      loop
-      animationData={json}
-      play
-      speed={0.2}
-      style={{ width: height, height: width }}
-    />
-  );
+  return <Lottie className={style} loop animationData={json} play />;
 }

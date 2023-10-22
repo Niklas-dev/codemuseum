@@ -22,9 +22,10 @@ export default async function Home() {
             </h1>
             <h2 className="text-gray-300 text-base md:text-lg lg:text-xl text-center md:text-start">
               Find awesome and asthetic code snippets. That are useful, short or
-              maybe just look good <br /> to the eye.
+              maybe just look good <br className="hidden md:block" /> to the
+              eye.
             </h2>
-            <div className="flex flex-row gap-6 mt-10">
+            <div className="flex flex-row justify-center md:justify-start gap-6 mt-10">
               <Link
                 className="flex cursor-pointer w-fit items-center text-sm md:text-base rounded-md border-2 border-black bg-violet-700 px-8 py-3 font-bold shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
                 href={"/explore"}
@@ -39,8 +40,11 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="ml-56 z-20">
-            <LottiePlayer height={550} width={550} json={LottieJson} />
+          <div className="ml-56 z-20 hidden lg:block">
+            <LottiePlayer
+              style="lg:w-[350px] lg:h-[350px] xl:w-[450px] xl:h-[450px]"
+              json={LottieJson}
+            />
           </div>
         </div>
       </main>
