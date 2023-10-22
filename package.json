@@ -19,7 +19,8 @@
     "next-auth": "^4.24.3",
     "postgres": "^3.4.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-lottie-player": "^1.5.5"
   },
   "devDependencies": {
     "@types/node": "^20",

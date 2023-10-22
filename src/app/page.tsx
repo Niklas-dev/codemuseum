@@ -1,8 +1,9 @@
 import { getAuthSession } from "@/lib/auth";
-
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+
+import LottieJson from "../../public/landing_anim.json";
+import LottiePlayer from "@/components/LottiePlayer";
 
 export const metadata: Metadata = {
   title: "CodeMuseum",
@@ -14,7 +15,7 @@ export default async function Home() {
     <>
       <main className="flex flex-col min-h-screen px-10 md:px-12 lg:px-20 justify-center ">
         <div className="flex flex-row ">
-          <div className="mb-56 flex flex-col gap-6">
+          <div className="mb-40 flex flex-col gap-6">
             <h1 className="text-3xl sm:text-4xl  lg:text-5xl xl:text-7xl font-semibold text-center md:text-start">
               Discover {"<Code />"} in it&apos;s <br /> best, most beautiful
               form
@@ -37,6 +38,9 @@ export default async function Home() {
                 Exhibit your Code
               </Link>
             </div>
+          </div>
+          <div className="ml-56 z-20">
+            <LottiePlayer height={550} width={550} json={LottieJson} />
           </div>
         </div>
       </main>
