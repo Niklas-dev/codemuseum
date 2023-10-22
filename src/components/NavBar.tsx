@@ -15,10 +15,18 @@ export default function NavBar() {
       </Link>
       {pathname !== "/sign-in" && (
         <ul className="flex flex-row items-center gap-4 text-lg">
-          <Link href={"/home"}>Explore</Link>
-          <Link href={"/home"}>Highlights</Link>
-          <Link href={"/home"}>Share</Link>
-          <Link href={"/home"}>About</Link>
+          <Link className="hover:underline" href={"/home"}>
+            Explore
+          </Link>
+          <Link className="hover:underline" href={"/home"}>
+            Highlights
+          </Link>
+          <Link className="hover:underline" href={"/home"}>
+            Share
+          </Link>
+          <Link className="hover:underline" href={"/home"}>
+            About
+          </Link>
 
           {data?.user ? (
             <Link href={"/profile"}>
