@@ -4,15 +4,15 @@ import Image from "next/image";
 export default async function NavBar() {
   const session = await getAuthSession();
   return (
-    <nav className="bg-transparent h-20 flex flex-row justify-between items-center px-20">
+    <nav className="bg-transparent h-20 flex flex-row justify-between items-center px-12 lg:px-20">
       <Link href={"/"} className="text-2xl font-bold">
         CodeMuseum
       </Link>
       <ul className="flex flex-row items-center gap-4 text-lg">
-        <Link href={"/home"}>Home</Link>
-        <Link href={"/home"}>Home</Link>
-        <Link href={"/home"}>Home</Link>
-        <Link href={"/home"}>Home</Link>
+        <Link href={"/home"}>Explore</Link>
+        <Link href={"/home"}>Highlights</Link>
+        <Link href={"/home"}>Share</Link>
+        <Link href={"/home"}>About</Link>
         {session?.user ? (
           <Link href={"/profile"}>
             <Image
