@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "8cb84e97-5e56-44d1-8fed-4eec02025517",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "03ee788c-27ee-4e3e-ac37-ee8389d4d8d1",
+  "prevId": "b2f28acb-bec9-463d-a530-ff62a1bdea6a",
   "tables": {
     "account": {
       "name": "account",
@@ -130,7 +130,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "smallserial",
           "primaryKey": true,
           "notNull": true
         },
@@ -220,7 +220,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "smallserial",
           "primaryKey": true,
           "notNull": true
         },
