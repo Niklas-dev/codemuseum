@@ -1,13 +1,11 @@
 import { getAuthSession } from "@/lib/auth";
 import Link from "next/link";
 import type { Metadata } from "next";
-
 import LottieJson from "../../public/landing_anim.json";
-
-import LottieLoveJson from "../../public/we_love_code.json";
 import LottiePlayer from "@/components/LottiePlayer";
-
 import CodeSampleShowcase from "@/components/CodeSampleShowcase";
+import WeLoveCodeShowcase from "@/components/WeLoveCodeShowcase";
+import GreatFeaturesShowcase from "@/components/GreatFeaturesShowcase";
 
 export const metadata: Metadata = {
   title: "CodeMuseum",
@@ -52,21 +50,10 @@ export default async function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-72">
+        <div className="flex flex-col items-center gap-64">
           <CodeSampleShowcase />
-          <div className=" h-96 w-full flex flex-col items-center">
-            <h1 className="text-center text-4xl font-medium whitespace-nowrap w-fit">
-              We ❤️ Code. <br /> Join an aswesome community of other code
-              creators.
-            </h1>
-            <p className="text-xl text-center font-light">
-              We love Code and thats why we offer an platform to quickly <br />{" "}
-              share, store and appreciate code of others. <br />
-              Simple, fast and robust.
-            </p>
-
-            <LottiePlayer speed={0.2} style="" json={LottieLoveJson} />
-          </div>
+          <WeLoveCodeShowcase />
+          <GreatFeaturesShowcase />
         </div>
       </main>
       <div className="fixed -bottom-64 right-56 blur-[150px] z-10 pointer-events-none">
