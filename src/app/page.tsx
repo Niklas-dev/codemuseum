@@ -6,6 +6,7 @@ import LottiePlayer from "@/components/LottiePlayer";
 import CodeSampleShowcase from "@/components/CodeSampleShowcase";
 import WeLoveCodeShowcase from "@/components/WeLoveCodeShowcase";
 import GreatFeaturesShowcase from "@/components/GreatFeaturesShowcase";
+import FadeInContainer from "@/components/FadeInContainer";
 
 export const metadata: Metadata = {
   title: "CodeMuseum",
@@ -42,7 +43,7 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-          <div className="ml-56 z-20 hidden lg:block">
+          <div className="ml-56 z-20 hidden lg:block ">
             <LottiePlayer
               speed={1}
               style="lg:w-[350px] lg:h-[350px] xl:w-[450px] xl:h-[450px]"
@@ -50,10 +51,16 @@ export default async function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-64">
-          <CodeSampleShowcase />
-          <WeLoveCodeShowcase />
-          <GreatFeaturesShowcase />
+        <div className="flex flex-col items-center gap-52 pb-28">
+          <FadeInContainer>
+            <CodeSampleShowcase />
+          </FadeInContainer>
+          <FadeInContainer>
+            <WeLoveCodeShowcase />
+          </FadeInContainer>
+          <FadeInContainer>
+            <GreatFeaturesShowcase />
+          </FadeInContainer>
         </div>
       </main>
       <div className="fixed -bottom-64 right-56 blur-[150px] z-10 pointer-events-none">

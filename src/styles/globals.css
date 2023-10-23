@@ -30,3 +30,16 @@
   background-color: #1a1a1a;
   border-radius: 16px;
 }
+
+.hidden-object {
+  opacity: 0;
+
+  transform: translateY(200px);
+  transition: all 0.8s ease-out;
+}
+
+.show-object {
+  opacity: 1;
+
+  transform: translateY(0);
+}
