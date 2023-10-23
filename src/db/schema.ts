@@ -4,21 +4,33 @@ import {
   text,
   primaryKey,
   integer,
+  serial,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations } from "drizzle-orm";
 
-export const posts = pgTable("post", {
-  id: text("id").notNull().primaryKey(),
-  code: text("content"),
-  language: text("content"),
-  likes: integer("likes"),
-  authorId: integer("author_id"),
-});
-
 export const likes = pgTable("likes", {
   postId: text("post_id").notNull().primaryKey(),
   authorId: integer("author_id"),
+});
+
+export const posts = pgTable("post", {
+  id: serial("id").notNull().primaryKey(),
+  code: text("content"),
+  language: text("content"),
+  likes: integer("likes"),
+  authorId: integer("author_id")
+    .notNull()
+    .references(() => users.id),
+});
+
+export const users = pgTable("user", {
+  id: serial("id").notNull().primaryKey(),
+  username: text("username").unique(),
+  name: text("name"),
+  email: text("email").notNull(),
+  emailVerified: timestamp("emailVerified", { mode: "date" }),
+  image: text("image"),
 });
 
 export const postsRelations = relations(posts, ({ one }) => ({
@@ -27,15 +39,6 @@ export const postsRelations = relations(posts, ({ one }) => ({
     references: [users.id],
   }),
 }));
-
-export const users = pgTable("user", {
-  id: text("id").notNull().primaryKey(),
-  username: text("username").unique(),
-  name: text("name"),
-  email: text("email").notNull(),
-  emailVerified: timestamp("emailVerified", { mode: "date" }),
-  image: text("image"),
-});
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
