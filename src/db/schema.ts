@@ -6,10 +6,27 @@ import {
   integer,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
+import { relations } from "drizzle-orm";
 
 export const posts = pgTable("post", {
   id: text("id").notNull().primaryKey(),
+  code: text("content"),
+  language: text("content"),
+  likes: integer("likes"),
+  authorId: integer("author_id"),
 });
+
+export const likes = pgTable("likes", {
+  postId: text("post_id").notNull().primaryKey(),
+  authorId: integer("author_id"),
+});
+
+export const postsRelations = relations(posts, ({ one }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+  }),
+}));
 
 export const users = pgTable("user", {
   id: text("id").notNull().primaryKey(),
@@ -19,6 +36,10 @@ export const users = pgTable("user", {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 });
+
+export const usersRelations = relations(users, ({ many }) => ({
+  posts: many(posts),
+}));
 
 export const accounts = pgTable(
   "account",

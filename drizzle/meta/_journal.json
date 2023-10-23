@@ -22,6 +22,27 @@
       "when": 1697984788497,
       "tag": "0002_dusty_colonel_america",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1698065198658,
+      "tag": "0003_confused_slayback",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1698065280496,
+      "tag": "0004_eminent_jean_grey",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1698065456948,
+      "tag": "0005_perpetual_vanisher",
+      "breakpoints": true
     }
   ]
 }
