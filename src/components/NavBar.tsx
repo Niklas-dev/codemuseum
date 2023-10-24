@@ -9,13 +9,17 @@ export default function NavBar() {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <nav className="bg-transparent h-20 flex flex-row justify-between items-center px-12 lg:px-20">
+    <nav
+      className={`bg-transparent h-20 flex flex-row justify-between items-center px-12 lg:px-20 z-30 ${
+        pathname === "/explore" && "bg-[#181818] "
+      }`}
+    >
       <Link href={"/"} className="text-2xl font-bold">
         CodeMuseum
       </Link>
       {pathname !== "/sign-in" && (
         <ul className="flex flex-row items-center gap-4 text-lg">
-          <Link className="hover:underline" href={"/home"}>
+          <Link className="hover:underline" href={"/explore"}>
             Explore
           </Link>
           <Link className="hover:underline" href={"/home"}>
