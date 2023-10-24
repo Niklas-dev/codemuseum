@@ -190,6 +190,20 @@
       "when": 1698099589779,
       "tag": "0026_dry_taskmaster",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "5",
+      "when": 1698156801464,
+      "tag": "0027_thankful_black_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1698157319425,
+      "tag": "0028_naive_shockwave",
+      "breakpoints": true
     }
   ]
 }

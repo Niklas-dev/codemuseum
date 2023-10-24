@@ -5,9 +5,17 @@ import {
   primaryKey,
   integer,
   serial,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations } from "drizzle-orm";
+
+export const languageEnum = pgEnum("language", [
+  "python",
+  "javascript",
+  "typescript",
+]);
+export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
 export const likes = pgTable("likes", {
   postId: text("post_id").notNull().primaryKey(),
@@ -17,11 +25,12 @@ export const likes = pgTable("likes", {
 export const posts = pgTable("post", {
   id: serial("id").notNull().primaryKey(),
   code: text("content"),
-  language: text("content"),
+  language: languageEnum("language"),
+  language_short: languageShortEnum("language_short"),
   likes: integer("likes"),
-  authorId: text("author_id")
+  authorId: integer("author_id")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.pk),
 });
 
 export const users = pgTable("user", {
@@ -37,7 +46,7 @@ export const users = pgTable("user", {
 export const postsRelations = relations(posts, ({ one }) => ({
   author: one(users, {
     fields: [posts.authorId],
-    references: [users.id],
+    references: [users.pk],
   }),
 }));
 
