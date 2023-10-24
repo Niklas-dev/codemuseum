@@ -1,4 +1,5 @@
 import { getAuthSession } from "@/lib/auth";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 export default async function ProfileView() {
   const session = await getAuthSession();
@@ -38,6 +39,7 @@ export default async function ProfileView() {
             <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
               Edit
             </button>
+            
           </div>
         </div>
         <div className="w-[35rem] bg-[#161616] rounded-2xl"></div>

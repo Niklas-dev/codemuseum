@@ -19,13 +19,14 @@ export const posts = pgTable("post", {
   code: text("content"),
   language: text("content"),
   likes: integer("likes"),
-  authorId: integer("author_id")
+  authorId: text("author_id")
     .notNull()
     .references(() => users.id),
 });
 
 export const users = pgTable("user", {
-  id: serial("id").notNull().primaryKey(),
+  pk: serial("pk").notNull().primaryKey(),
+  id: text("id").notNull().unique(),
   username: text("username").unique(),
   name: text("name"),
   email: text("email").notNull(),
