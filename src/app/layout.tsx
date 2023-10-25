@@ -21,11 +21,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${museo.className} text-white h-screen w-screen  flex flex-col bg-[#050505] overflow-x-hidden `}
+        className={`${museo.className} text-white h-screen w-screen  flex flex-col bg-[#050505] overflow-x-hidden  `}
       >
         <SessionProvider session={session}>
           <NavBar />
-          <div className="fixed h-full w-full pointer-events-none noise-background "></div>
+          <div className="fixed h-full  w-full pointer-events-none noise-background  "></div>
 
           {children}
         </SessionProvider>

@@ -16,8 +16,8 @@ export default async function Home() {
   const session = await getAuthSession();
   return (
     <>
-      <main className="flex flex-col min-h-screen px-10 md:px-12 lg:px-20 justify-start z-20">
-        <div className="flex flex-row items-center h-screen mt-20 lg:mt-14 xl:mt-4  ">
+      <main className="flex flex-col h-fit  px-10 md:px-12 lg:px-20 justify-start z-20">
+        <div className="flex flex-row  items-center h-screen mt-20 lg:mt-14 xl:mt-4  ">
           <div className="mb-40 flex flex-col gap-6">
             <h1 className="text-3xl sm:text-4xl  lg:text-5xl xl:text-6xl 2xl:7xl font-semibold text-center md:text-start">
               Discover {"<Code />"} in it&apos;s <br /> best, most beautiful
