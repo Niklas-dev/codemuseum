@@ -10,9 +10,9 @@ export default function NavBar() {
   console.log(pathname);
   return (
     <nav
-      className={`bg-transparent py-3  flex flex-row justify-between items-center px-12 lg:px-20 z-40 ${
-        pathname === "/explore" && "bg-[#181717] shadow-lg"
-      }`}
+      className={`${
+        pathname === "/explore" ? "shadow-lg bg-[#181818]" : "bg-transparent"
+      }  py-3 flex flex-row justify-between items-center px-12  lg:px-20 z-40 `}
     >
       <Link href={"/"} className="text-2xl font-bold">
         CodeMuseum
