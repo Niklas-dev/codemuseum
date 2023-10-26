@@ -15,7 +15,7 @@
     "@auth/drizzle-adapter": "^0.3.4",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.28.6",
-    "next": "13.5.6",
+    "next": "14.0.0",
     "next-auth": "^4.24.3",
     "postgres": "^3.4.0",
     "react": "^18",
@@ -32,7 +32,7 @@
     "autoprefixer": "^10",
     "drizzle-kit": "^0.19.13",
     "eslint": "^8",
-    "eslint-config-next": "13.5.6",
+    "eslint-config-next": "14.0.0",
     "postcss": "^8",
     "tailwindcss": "^3",
     "typescript": "^5"

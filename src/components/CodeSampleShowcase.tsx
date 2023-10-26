@@ -1,6 +1,6 @@
 "use client";
-import { CodeBlock, monokaiSublime } from "react-code-blocks";
-
+import { monokaiSublime } from "react-code-blocks";
+import CodeBlock from "../components/CodeBlock";
 export default function CodeSampleShowcase() {
   return (
     <div className=" h-fit  w-full flex flex-col items-center ">

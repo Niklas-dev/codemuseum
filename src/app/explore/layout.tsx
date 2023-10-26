@@ -6,15 +6,15 @@ export const metadata: Metadata = {
   description: "Code!!!",
 };
 
-export default async function Layout({
+export default async function ExploreLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row h-full w-full ">
+    <section className="flex flex-row h-full w-full ">
       <ExploreSideBar />
       {children}
-    </div>
+    </section>
   );
 }
