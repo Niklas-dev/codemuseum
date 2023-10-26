@@ -11,8 +11,8 @@ export default function NavBar() {
   return (
     <nav
       className={`${
-        pathname === "/explore" ? "shadow-lg bg-[#181818]" : "bg-transparent"
-      }  py-3 flex flex-row justify-between items-center px-12  lg:px-20 z-40 `}
+        pathname === "/explore" ? "shadow-lg bg-[#111111]" : "bg-transparent"
+      } py-3 flex flex-row justify-between items-center px-12 lg:px-20 z-40`}
     >
       <Link href={"/"} className="text-2xl font-bold">
         CodeMuseum
