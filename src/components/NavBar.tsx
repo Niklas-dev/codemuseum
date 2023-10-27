@@ -12,9 +12,9 @@ export default function NavBar() {
     <nav
       className={`${
         pathname === "/explore"
-          ? "shadow-lg bg-[#111111] w-full fixed"
+          ? "shadow-lg bg-[#111111] fixed"
           : "bg-transparent"
-      } h-20 flex flex-row justify-between items-center px-12 lg:px-20 z-40`}
+      } flex flex-row  w-full justify-between items-center px-12 lg:px-20 z-40 h-20 py-10`}
     >
       <Link href={"/"} className="text-2xl font-bold">
         CodeMuseum
