@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import {
   FaChevronDown,
   FaChevronLeft,
@@ -7,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 export default function ExploreSideBar() {
+  const [show, setShow] = useState(false);
   return (
     <div className=" bg-[#0c0c0c] h-3/4 w-72  z-20 rounded-br-xl pb-6 fixed">
       <div className="flex flex-col">
