@@ -15,11 +15,12 @@
 * {
   scrollbar-width: auto;
   scrollbar-color: #1a1a1a #ffffff;
+  z-index: 30;
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
 }
 
 *::-webkit-scrollbar-track {
