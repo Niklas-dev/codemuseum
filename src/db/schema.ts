@@ -19,6 +19,7 @@ export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
 export const likes = pgTable("likes", {
   pk: serial("pk").notNull().primaryKey(),
+  createdAt: timestamp("createdAt", { mode: "date" }),
   postPk: integer("post_pk")
     .notNull()
     .references(() => posts.pk),
