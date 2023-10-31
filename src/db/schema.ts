@@ -6,6 +6,7 @@ import {
   integer,
   serial,
   pgEnum,
+  varchar,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations } from "drizzle-orm";
@@ -44,6 +45,7 @@ export const posts = pgTable("post", {
 export const users = pgTable("user", {
   pk: serial("pk").notNull().primaryKey(),
   id: text("id").notNull().unique(),
+  bio: varchar("bio", { length: 255 }),
   username: text("username").unique(),
   name: text("name"),
   email: text("email").notNull(),
