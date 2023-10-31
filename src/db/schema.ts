@@ -18,6 +18,7 @@ export const languageEnum = pgEnum("language", [
 export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
 export const likes = pgTable("likes", {
+  pk: serial("pk").notNull().primaryKey(),
   postPk: integer("post_pk")
     .notNull()
     .references(() => posts.pk),
@@ -46,6 +47,7 @@ export const users = pgTable("user", {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 });
+
 export const likesRelations = relations(likes, ({ one }) => ({
   user: one(users, {
     fields: [likes.userPk],

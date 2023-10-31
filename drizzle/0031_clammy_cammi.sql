@@ -1,0 +1,1 @@
+ALTER TABLE "likes" ADD COLUMN "pk" serial NOT NULL;
