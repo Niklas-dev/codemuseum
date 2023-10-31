@@ -18,12 +18,16 @@ export const languageEnum = pgEnum("language", [
 export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
 export const likes = pgTable("likes", {
-  postId: text("post_id").notNull().primaryKey(),
-  authorId: integer("author_id"),
+  postPk: integer("post_pk")
+    .notNull()
+    .references(() => posts.pk),
+  userPk: integer("user_pk")
+    .notNull()
+    .references(() => users.pk),
 });
 
 export const posts = pgTable("post", {
-  id: serial("id").notNull().primaryKey(),
+  pk: serial("pk").notNull().primaryKey(),
   code: text("content"),
   language: languageEnum("language"),
   language_short: languageShortEnum("language_short"),
@@ -42,16 +46,28 @@ export const users = pgTable("user", {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 });
+export const likesRelations = relations(likes, ({ one }) => ({
+  user: one(users, {
+    fields: [likes.userPk],
+    references: [users.pk],
+  }),
+  post: one(posts, {
+    fields: [likes.postPk],
+    references: [posts.pk],
+  }),
+}));
 
-export const postsRelations = relations(posts, ({ one }) => ({
+export const postsRelations = relations(posts, ({ one, many }) => ({
   author: one(users, {
     fields: [posts.authorId],
     references: [users.pk],
   }),
+  likes: many(likes),
 }));
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
+  likes: many(likes),
 }));
 
 export const accounts = pgTable(

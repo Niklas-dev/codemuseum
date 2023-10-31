@@ -4,7 +4,7 @@ import Image from "next/image";
 export default async function ProfileView() {
   const session = await getAuthSession();
   return (
-    <div className="px-20 py-8 w-full h-full flex flex-col z-20">
+    <div className="px-20 py-8 w-full h-full flex flex-col z-30">
       <div className="flex flex-row gap-8">
         <div className="bg-[#161616] w-full h-[35rem] rounded-2xl flex flex-col">
           <div className="h-52 w-full bg-[#252525] rounded-t-2xl relative">
@@ -39,7 +39,6 @@ export default async function ProfileView() {
             <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
               Edit
             </button>
-            
           </div>
         </div>
         <div className="w-[35rem] bg-[#161616] rounded-2xl"></div>
