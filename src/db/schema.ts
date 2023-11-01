@@ -23,11 +23,9 @@ export const likes = pgTable("likes", {
   createdAt: timestamp("createdAt", { mode: "date" }),
   postPk: integer("post_pk")
     .notNull()
-    .unique()
     .references(() => posts.pk),
   userPk: integer("user_pk")
     .notNull()
-    .unique()
     .references(() => users.pk),
 });
 
