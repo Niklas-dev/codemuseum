@@ -18,16 +18,22 @@ export const languageEnum = pgEnum("language", [
 ]);
 export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
-export const likes = pgTable("likes", {
-  pk: serial("pk").notNull().primaryKey(),
-  createdAt: timestamp("createdAt", { mode: "date" }),
-  postPk: integer("post_pk")
-    .notNull()
-    .references(() => posts.pk),
-  userPk: integer("user_pk")
-    .notNull()
-    .references(() => users.pk),
-});
+export const likes = pgTable(
+  "likes",
+  {
+    pk: serial("pk").notNull(),
+    createdAt: timestamp("createdAt", { mode: "date" }),
+    postPk: integer("post_pk")
+      .notNull()
+      .references(() => posts.pk),
+    userPk: integer("user_pk")
+      .notNull()
+      .references(() => users.pk),
+  },
+  (like) => ({
+    compoundKey: primaryKey(like.userPk, like.postPk),
+  })
+);
 
 export const posts = pgTable("post", {
   pk: serial("pk").notNull().primaryKey(),
