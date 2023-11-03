@@ -12,14 +12,14 @@ export default async function ExploreLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-row  w-full  h-screen overflow-hidden">
-      <div className="w-[18rem] mt-20">
+    <section className="flex flex-row  w-full  h-screen overflow-hidden mt-20">
+      <div className="w-[18rem] ">
         <ExploreSideBar />
       </div>
-      <main className="p-12 h-full flex-grow mt-20  overflow-y-scroll">
+      <main className="p-12 h-full w-full bg-re   overflow-y-scroll">
         {children}
       </main>
-      <div className="w-[18rem] mt-20">
+      <div className="w-[18rem] ">
         <ExploreSideBar />
       </div>
     </section>
