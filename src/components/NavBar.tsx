@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-
+import { MuseoModerno } from "next/font/google";
+const museo = MuseoModerno({ subsets: ["latin"] });
 export default function NavBar() {
   const { data } = useSession();
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function NavBar() {
           : "bg-transparent"
       } flex flex-row  w-full justify-between items-center px-12 lg:px-20 z-40 h-20 py-10`}
     >
-      <Link href={"/"} className="text-2xl font-bold">
+      <Link href={"/"} className={`text-2xl font-bold ${museo.className}`}>
         CodeMuseum
       </Link>
       {pathname !== "/sign-in" && (
