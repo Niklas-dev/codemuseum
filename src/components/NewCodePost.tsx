@@ -34,7 +34,10 @@ export default function NewCodePost({ image }: { image: string }) {
   });
   return (
     <div className="h-fit w-full bg-[#111111] rounded-xl p-6  flex flex-col">
-      <div className="flex flex-col w-full  items-start gap-4">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="flex flex-col w-full  items-start gap-4"
+      >
         <div className="flex flex-row items-center gap-4 w-full">
           <Image
             className=" h-12 w-12 rounded-full bg-gray-600  "
@@ -90,7 +93,10 @@ export default function NewCodePost({ image }: { image: string }) {
           minHeight={"150px"}
           className="w-full h-fit text-lg"
         />
-      </div>
+        <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
+          Create Post
+        </button>
+      </form>
     </div>
   );
 }
