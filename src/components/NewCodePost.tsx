@@ -79,6 +79,7 @@ export default function NewCodePost({ image }: { image: string }) {
             className="px-3 py-1.5 bg-[#181818] rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg resize-none"
           />
         </div>
+
         <CodeMirror
           value={code}
           onChange={(newValue) => setCode(newValue)}
@@ -91,8 +92,9 @@ export default function NewCodePost({ image }: { image: string }) {
             history: true,
           }}
           minHeight={"150px"}
-          className="w-full h-fit text-lg"
+          className="w-full h-fit text-lg ring-gray-600 focus:ring-1 "
         />
+
         <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
           Create Post
         </button>
