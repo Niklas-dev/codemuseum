@@ -14,7 +14,7 @@ export default function CodeSampleShowcase() {
     hljs.highlightBlock(codeRefTwo.current!);
   }, []);
   return (
-    <div className=" h-fit w-full flex flex-col items-center">
+    <div className=" h-fit w-full flex flex-col items-center ">
       <h1 className="text-center text-4xl font-medium whitespace-nowrap w-fit">
         Stop hiding, <br /> embrace the beauty of your code
       </h1>

@@ -26,8 +26,12 @@ const EXTENSIONS: { [key: string]: LanguageSupport[] } = {
 };
 export default function NewCodePost({ image }: { image: string }) {
   const [code, setCode] = useState(`input("Your awesome code")`);
-  const [description, setDescription] = useState("");
   const [language, setLanguage] = useState("python");
+  const [formData, setFormData] = useState({
+    title: "Your awesome title",
+    description: "",
+    tags: [],
+  });
   return (
     <div className="h-fit w-full bg-[#111111] rounded-xl p-6  flex flex-col">
       <div className="flex flex-col w-full  items-start gap-4">
@@ -41,22 +45,34 @@ export default function NewCodePost({ image }: { image: string }) {
           />
 
           <h2 className="text-2xl font-bold">
-            Create a new post for the community
+            {formData.title == "" ? "Your awesome title" : formData.title}
           </h2>
         </div>
         <div className="flex flex-col w-full h-fit gap-4 text-gray-200">
           <input
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                title: e.target.value,
+              }))
+            }
+            value={formData.title == "Your awesome title" ? "" : formData.title}
             placeholder="Your awesome title"
             className="h-12 w-full px-3 py-1.5 bg-[#181818] rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
           />
           <TextareaAutosize
+            onChange={(e) =>
+              setFormData((prevData) => ({
+                ...prevData,
+                description: e.target.value,
+              }))
+            }
             minRows={2}
             maxRows={6}
             spellCheck={false}
             cacheMeasurements
-            value={description}
+            value={formData.description}
             placeholder="Your awesome description"
-            onChange={(ev) => setDescription(ev.target.value)}
             className="px-3 py-1.5 bg-[#181818] rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg resize-none"
           />
         </div>

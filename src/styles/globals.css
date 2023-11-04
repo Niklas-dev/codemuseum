@@ -44,3 +44,12 @@
 
   transform: translateY(0);
 }
+
+.cm-editor {
+  background-color: #181818;
+}
+
+.cm-gutter {
+  background-color: #181818;
+  color: #535353;
+}
