@@ -18,6 +18,12 @@ export const languageEnum = pgEnum("language", [
 ]);
 export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
+export const tags = pgTable("tags", {
+  pk: serial("pk").notNull(),
+  name: text("name"),
+  logo: text("logo"),
+});
+
 export const likes = pgTable(
   "likes",
   {
