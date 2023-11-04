@@ -13,6 +13,10 @@ import { json } from "@codemirror/lang-json";
 import { java } from "@codemirror/lang-java";
 import { python } from "@codemirror/lang-python";
 import TextareaAutosize from "react-textarea-autosize";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import { customStyles } from "@/styles/custom";
+const animatedComponents = makeAnimated();
 const EXTENSIONS: { [key: string]: LanguageSupport[] } = {
   markdown: [markdown()],
   python: [python()],
@@ -32,6 +36,10 @@ export default function NewCodePost({ image }: { image: string }) {
     description: "",
     tags: [],
   });
+  const [options, setOptions] = useState([
+    { value: "Test", label: "Test" },
+    { value: "Test2", label: "Test2" },
+  ]);
   return (
     <div className="h-fit w-full bg-[#111111] rounded-xl p-6  flex flex-col">
       <form
@@ -61,7 +69,7 @@ export default function NewCodePost({ image }: { image: string }) {
             }
             value={formData.title == "Your awesome title" ? "" : formData.title}
             placeholder="Your awesome title"
-            className="h-12 w-full px-3 py-1.5 bg-[#181818] rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
+            className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
           />
           <TextareaAutosize
             onChange={(e) =>
@@ -76,7 +84,7 @@ export default function NewCodePost({ image }: { image: string }) {
             cacheMeasurements
             value={formData.description}
             placeholder="Your awesome description"
-            className="px-3 py-1.5 bg-[#181818] rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg resize-none"
+            className="px-3 py-1.5 bg-[#181818] rounded-lg outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
           />
         </div>
 
@@ -94,8 +102,26 @@ export default function NewCodePost({ image }: { image: string }) {
           minHeight={"150px"}
           className="w-full h-fit text-lg ring-gray-600 focus:ring-1 "
         />
+        <Select
+          styles={customStyles}
+          onChange={(e) => {}}
+          closeMenuOnSelect={false}
+          components={animatedComponents}
+          isMulti
+          theme={(theme) => ({
+            ...theme,
 
-        <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
+            colors: {
+              ...theme.colors,
+              primary25: "#2e2e2e",
+              primary: "black",
+            },
+          })}
+          options={options}
+          className="w-full z-10"
+        />
+
+        <button className="flex cursor-pointer z-0  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
           Create Post
         </button>
       </form>
