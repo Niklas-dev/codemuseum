@@ -1,5 +1,5 @@
 import { NextApiRequest } from "next";
-import { getToken } from "next-auth/jwt";
+import { JWT, getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 
 export async function getUserOr401(req: NextApiRequest) {
