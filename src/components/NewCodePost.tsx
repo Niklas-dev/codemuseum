@@ -84,7 +84,7 @@ export default function NewCodePost({ image }: { image: string }) {
             cacheMeasurements
             value={formData.description}
             placeholder="Your awesome description"
-            className="px-3 py-1.5 bg-[#181818] rounded-lg outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
+            className="px-3 py-1.5 bg-[#181818] rounded-lg  outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
           />
         </div>
 

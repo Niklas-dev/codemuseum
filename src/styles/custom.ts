@@ -19,6 +19,19 @@ export const customStyles: StylesConfig = {
       borderColor: state.isFocused ? "#4b5563" : "#4b5563",
     },
   }),
+  multiValue: (styles) => ({
+    ...styles,
+    background: "#2e2e2e",
+    borderRadius: 4,
+    zIndex: 1,
+  }),
+  multiValueLabel: (styles) => ({
+    ...styles,
+    color: "#e5e7eb",
+
+    zIndex: 1,
+  }),
+
   menu: (base: any) => ({
     ...base,
     // override border radius to match the box
