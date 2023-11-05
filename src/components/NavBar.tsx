@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { MuseoModerno } from "next/font/google";
+import ProfilePictureDisplay from "./ProfilePictureDisplay";
 const museo = MuseoModerno({ subsets: ["latin"] });
 export default function NavBar() {
   const { data } = useSession();
@@ -37,13 +38,7 @@ export default function NavBar() {
 
           {data?.user ? (
             <Link href={"/profile"}>
-              <Image
-                className="bg-white rounded-full"
-                src={data!.user!.image!}
-                alt={data!.user!.name!}
-                width={50}
-                height={50}
-              />
+              <ProfilePictureDisplay image={data!.user!.image!} />
             </Link>
           ) : (
             <Link
