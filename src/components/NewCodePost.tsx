@@ -43,7 +43,7 @@ export default function NewCodePost({ image }: { image: string }) {
     { value: "Test2", label: "Test2" },
   ]);
   return (
-    <div className="h-fit w-full bg-[#111111] rounded-xl p-6  flex flex-col">
+    <div className="h-fit  bg-[#111111] rounded-xl p-6  flex flex-col">
       <form
         onSubmit={(e) => e.preventDefault()}
         className="flex flex-col w-full  items-start gap-4"
