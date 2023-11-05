@@ -21,19 +21,19 @@ export default async function ExploreLayout({
         </div>
         <div className="bg-[#000000] w-full h-fit p-2 bottom-0 fixed lg:hidden flex flex-row gap-2 justify-around items-center text-lg">
           <Link
-            href={""}
+            href={"/explore/gallery"}
             className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
           >
             <FaCode /> Gallery
           </Link>
           <Link
-            href={""}
+            href={"/explore/articles"}
             className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
           >
             <FaNewspaper /> Articles
           </Link>
           <Link
-            href={""}
+            href={"/explore/community"}
             className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
           >
             <FaUserFriends /> Community
