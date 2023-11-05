@@ -1,5 +1,6 @@
 import ExploreSideBar from "@/components/ExploreSideBar";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { FaCode, FaNewspaper, FaUserFriends } from "react-icons/fa";
 
 export const metadata: Metadata = {
@@ -18,16 +19,25 @@ export default async function ExploreLayout({
         <div className="hidden lg:flex">
           <ExploreSideBar />
         </div>
-        <div className="bg-[#000000] w-full h-fit py-2 bottom-0 fixed lg:hidden flex flex-row justify-around items-center text-lg">
-          <div className="flex flex-col items-center">
+        <div className="bg-[#000000] w-full h-fit p-2 bottom-0 fixed lg:hidden flex flex-row gap-2 justify-around items-center text-lg">
+          <Link
+            href={""}
+            className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
+          >
             <FaCode /> Gallery
-          </div>
-          <div className="flex flex-col items-center">
+          </Link>
+          <Link
+            href={""}
+            className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
+          >
             <FaNewspaper /> Articles
-          </div>
-          <div className="flex flex-col items-center">
+          </Link>
+          <Link
+            href={""}
+            className="flex flex-col items-center bg-[#111111] hover:bg-[#1a1a1a] p-1 rounded-lg w-1/3 transition-colors"
+          >
             <FaUserFriends /> Community
-          </div>
+          </Link>
         </div>
       </div>
       <main className=" p-4 lg:p-12  h-full w-screen overflow-y-scroll z-10 flex flex-row">
