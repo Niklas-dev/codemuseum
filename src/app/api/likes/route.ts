@@ -11,6 +11,7 @@ import { eq } from "drizzle-orm";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
+
 import { z } from "zod";
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
@@ -29,6 +30,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
           .where(eq(users.email, token.email!))
           .limit(1)
       )[0].userPk;
+      console.log("test1");
 
       const dbLike = (
         await db
@@ -39,7 +41,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
           })
           .returning()
       )[0];
-
+      console.log("test2");
       return NextResponse.json(dbLike, { status: 201 });
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -49,8 +51,11 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
         );
       }
       console.error(err);
+      return NextResponse.json(
+        { error: "Post does not exist or already liked." },
+        { status: 400 }
+      );
     }
-    return NextResponse.json({ error: "test" }, { status: 200 });
   }
 
   return NextResponse.json(
