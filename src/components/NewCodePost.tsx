@@ -17,6 +17,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { customStyles } from "@/styles/custom";
 import { signOut } from "next-auth/react";
+import ProfilePictureDisplay from "./ProfilePictureDisplay";
 const animatedComponents = makeAnimated();
 const EXTENSIONS: { [key: string]: LanguageSupport[] } = {
   markdown: [markdown()],
@@ -48,13 +49,7 @@ export default function NewCodePost({ image }: { image: string }) {
         className="flex flex-col w-full  items-start gap-4"
       >
         <div className="flex flex-row items-center gap-4 w-full">
-          <Image
-            className=" h-12 w-12 rounded-full bg-gray-600  "
-            src={image}
-            width={50}
-            height={50}
-            alt="avatar"
-          />
+          <ProfilePictureDisplay image={image} />
 
           <h2 className="text-2xl font-bold">
             {formData.title == "" ? "Your awesome title" : formData.title}

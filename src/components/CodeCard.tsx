@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import { getAuthSession } from "@/lib/auth";
 import CodeCardCodeDisplay from "./CodeCardCodeDisplay";
+import ProfilePictureDisplay from "./ProfilePictureDisplay";
 
 export default async function CodeCard() {
   const session = await getAuthSession();
@@ -14,13 +15,7 @@ export default async function CodeCard() {
     <div className="h-fit w-full bg-[#111111] rounded-xl p-6  flex flex-col">
       <div className="flex flex-row w-full justify-between items-center">
         <div className="flex flex-row gap-2">
-          <Image
-            className=" h-12 w-12 rounded-full bg-gray-600  "
-            src={session!.user!.image!}
-            width={50}
-            height={50}
-            alt="avatar"
-          />
+          <ProfilePictureDisplay image={session!.user!.image!} />
           <div className="flex flex-col">
             <p>{session!.user!.name}</p>
             <p className="text-gray-300">2 hours ago</p>
