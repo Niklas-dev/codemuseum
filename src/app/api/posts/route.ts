@@ -7,16 +7,20 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { streamToJson } from "@/lib/utils";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { User } from "next-auth";
+
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
   if (token) {
     const { searchParams } = new URL(req.url as string);
+    console.log(searchParams.get("page"));
+    const page = 1;
 
-    const dbUsers = await db.select().from(users);
+    const limit = 5;
 
-    console.log(searchParams.get("test"));
-    return NextResponse.json({ test: dbUsers }, { status: 200 });
+    const offset = (page - 1) * limit;
+    const dbPosts = await db.select().from(posts).limit(limit).offset(offset);
+
+    return NextResponse.json(dbPosts, { status: 200 });
   }
   return NextResponse.json(
     { Error: "You are not signed in." },

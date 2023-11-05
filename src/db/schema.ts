@@ -30,7 +30,7 @@ export const likes = pgTable(
   "likes",
   {
     pk: serial("pk").notNull(),
-    createdAt: timestamp("createdAt", { mode: "date" }),
+    createdAt: timestamp("createdAt", { mode: "date" }).defaultNow(),
     postPk: integer("post_pk")
       .notNull()
       .references(() => posts.pk),
@@ -140,4 +140,9 @@ export const insertPostSchema = createInsertSchema(posts, {
   language: (schema) => schema.language,
   language_short: (schema) => schema.language_short,
   authorId: (schema) => schema.authorId.optional(),
+});
+
+export const insertLikeSchema = createInsertSchema(likes, {
+  postPk: (schema) => schema.postPk,
+  userPk: (schema) => schema.userPk.optional(),
 });

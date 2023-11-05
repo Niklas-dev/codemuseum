@@ -1,0 +1,60 @@
+import { db } from "@/db";
+import {
+  insertPostSchema,
+  users,
+  posts,
+  likes,
+  insertLikeSchema,
+} from "@/db/schema";
+import { streamToJson } from "@/lib/utils";
+import { eq } from "drizzle-orm";
+import { NextApiRequest, NextApiResponse } from "next";
+import { getToken } from "next-auth/jwt";
+import { NextResponse } from "next/server";
+import { z } from "zod";
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  const token = await getToken({ req });
+
+  if (token) {
+    const jsonLike = await streamToJson(req.body);
+
+    try {
+      const newLike = insertLikeSchema.parse(jsonLike);
+      const userPk = (
+        await db
+          .select({
+            userPk: users.pk,
+          })
+          .from(users)
+          .where(eq(users.email, token.email!))
+          .limit(1)
+      )[0].userPk;
+
+      const dbLike = (
+        await db
+          .insert(likes)
+          .values({
+            userPk: userPk,
+            postPk: newLike.postPk,
+          })
+          .returning()
+      )[0];
+
+      return NextResponse.json(dbLike, { status: 201 });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        return NextResponse.json(
+          err.issues.map((issue) => issue.message),
+          { status: 400 }
+        );
+      }
+      console.error(err);
+    }
+    return NextResponse.json({ error: "test" }, { status: 200 });
+  }
+
+  return NextResponse.json(
+    { Error: "You are not signed in." },
+    { status: 401 }
+  );
+}
