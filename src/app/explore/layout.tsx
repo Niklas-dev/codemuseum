@@ -12,7 +12,7 @@ export default async function ExploreLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-row justify-between relative  w-screen  h-screen overflow-x-hidden mt-20">
+    <section className="flex flex-row justify-between relative  w-screen  h-screen overflow-x-hidden mt-20 ">
       <div className="w-[18rem] z-20 absolute lg:relative">
         <ExploreSideBar />
       </div>
