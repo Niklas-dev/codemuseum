@@ -68,11 +68,3 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     { status: 401 }
   );
 }
-
-/*
-        title: posts.title,
-        code: posts.code,
-        authorId: dbUser.pk,
-        language: posts.language,
-        language_short: posts.language_short,
-*/
