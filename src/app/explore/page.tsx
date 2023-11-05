@@ -13,7 +13,7 @@ import NewCodePost from "@/components/NewCodePost";
 export default async function Page() {
   const session = await getAuthSession();
   return (
-    <div className="flex flex-col gap-8 h-fit w-full">
+    <div className="flex flex-col gap-8 h-fit w-full pb-20">
       <NewCodePost image={session!.user!.image!} />
       <CodeCard />
     </div>
