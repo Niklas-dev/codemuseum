@@ -60,7 +60,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
           { status: 400 }
         );
       }
-      console.log(err);
+      console.error(err);
     }
     return NextResponse.json({ error: "test" }, { status: 200 });
   }
