@@ -46,7 +46,7 @@ export const likes = pgTable(
 export const posts = pgTable("post", {
   pk: serial("pk").notNull().primaryKey(),
   title: text("title"),
-  code: text("content"),
+  code: text("code"),
   language: languageEnum("language"),
   language_short: languageShortEnum("language_short"),
   likes: integer("likes"),
