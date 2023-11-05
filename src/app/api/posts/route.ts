@@ -31,7 +31,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     const jsonPost = await streamToJson(req.body);
 
     try {
-      const post = insertPostSchema.parse(jsonPost);
+      const newPost = insertPostSchema.parse(jsonPost);
       const dbUser = (
         await db
           .select()
@@ -39,16 +39,18 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
           .where(eq(users.email, token.email!))
           .limit(1)
       )[0];
-      const dbPost = await db
-        .insert(posts)
-        .values({
-          title: post.title,
-          code: post.code,
-          authorId: dbUser.pk,
-          language: post.language,
-          language_short: post.language_short,
-        })
-        .returning();
+      const dbPost = (
+        await db
+          .insert(posts)
+          .values({
+            title: newPost.title,
+            code: newPost.code,
+            authorId: dbUser.pk,
+            language: newPost.language,
+            language_short: newPost.language_short,
+          })
+          .returning()
+      )[0];
 
       return NextResponse.json(dbPost, { status: 201 });
     } catch (err) {
