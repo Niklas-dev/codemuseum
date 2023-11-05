@@ -16,7 +16,7 @@ export default function NavBar() {
   return (
     <nav
       className={`${
-        pathname === "/explore"
+        pathname === "/explore" || pathname === "/explore/gallery"
           ? "shadow-lg bg-[#111111] fixed"
           : "bg-transparent"
       } flex flex-row  w-full justify-between items-center px-4 sm:px-12 lg:px-20 z-40 h-20 py-10`}
