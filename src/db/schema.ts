@@ -10,6 +10,8 @@ import {
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations } from "drizzle-orm";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
 export const languageEnum = pgEnum("language", [
   "python",
@@ -43,6 +45,7 @@ export const likes = pgTable(
 
 export const posts = pgTable("post", {
   pk: serial("pk").notNull().primaryKey(),
+  title: text("title"),
   code: text("content"),
   language: languageEnum("language"),
   language_short: languageShortEnum("language_short"),
@@ -128,3 +131,13 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey(vt.identifier, vt.token),
   })
 );
+
+// zod schemas
+
+export const insertPostSchema = createInsertSchema(posts, {
+  title: (schema) => schema.title,
+  code: (schema) => schema.code,
+  language: (schema) => schema.language,
+  language_short: (schema) => schema.language_short,
+  authorId: (schema) => schema.authorId.optional(),
+});

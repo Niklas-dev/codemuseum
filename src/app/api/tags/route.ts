@@ -4,11 +4,16 @@ import { NextResponse } from "next/server";
 import { JWT, getToken } from "next-auth/jwt";
 
 import { NextApiRequest, NextApiResponse } from "next";
-import { getUserOr401 } from "@/lib/utils";
+
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const user = (await getUserOr401(req)) as JWT;
+  const token = await getToken({ req });
+  if (token) {
+    const dbTags = await db.select().from(tags);
 
-  const dbTags = await db.select().from(tags);
-
-  return NextResponse.json({ test: dbTags }, { status: 200 });
+    return NextResponse.json({ test: dbTags }, { status: 200 });
+  }
+  return NextResponse.json(
+    { Error: "You are not signed in." },
+    { status: 401 }
+  );
 }
