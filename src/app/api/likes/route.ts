@@ -56,7 +56,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
         { status: 400 }
       );
     }
-  }
+  } //improve error handling
 
   return NextResponse.json(
     { Error: "You are not signed in." },
