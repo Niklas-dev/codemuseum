@@ -10,12 +10,15 @@ import {
 } from "react-icons/bi";
 import CodeCard from "@/components/CodeCard";
 import NewCodePost from "@/components/NewCodePost";
+import SpotLightWrapper from "@/components/SpotLightWrapper";
 export default async function Page() {
   const session = await getAuthSession();
   return (
     <div className="flex flex-col gap-8 h-fit w-full pb-20">
       <NewCodePost image={session!.user!.image!} />
-      <CodeCard />
+      <SpotLightWrapper className="h-fit w-fit">
+        <CodeCard />
+      </SpotLightWrapper>
     </div>
   );
 }
