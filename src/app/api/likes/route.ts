@@ -40,9 +40,19 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
             postPk: newLike.postPk,
           })
           .returning()
+          .onConflictDoNothing()
       )[0];
-      console.log("test2");
-      return NextResponse.json(dbLike, { status: 201 });
+
+      if (!dbLike) {
+        return NextResponse.json(
+          { error: "Post does not exist or already liked." },
+          { status: 400 }
+        );
+      }
+      return NextResponse.json(
+        { ...dbLike, message: "Like added to post." },
+        { status: 201 }
+      );
     } catch (err) {
       if (err instanceof z.ZodError) {
         return NextResponse.json(
@@ -52,7 +62,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       }
       console.error(err);
       return NextResponse.json(
-        { error: "Post does not exist or already liked." },
+        { error: "An error occurred." },
         { status: 400 }
       );
     }

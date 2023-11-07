@@ -43,6 +43,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
           .where(eq(users.email, token.email!))
           .limit(1)
       )[0];
+
       const dbPost = (
         await db
           .insert(posts)
@@ -54,13 +55,21 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
             language_short: newPost.language_short,
           })
           .returning()
+          .onConflictDoNothing()
       )[0];
+
+      if (!dbPost) {
+        return NextResponse.json(
+          { error: "Failed to create post." },
+          { status: 400 }
+        );
+      }
 
       return NextResponse.json(dbPost, { status: 201 });
     } catch (err) {
       if (err instanceof z.ZodError) {
         return NextResponse.json(
-          err.issues.map((issue) => issue.message),
+          err.issues.map((issue) => Object({ error: issue.message })),
           { status: 400 }
         );
       }
@@ -70,7 +79,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   }
 
   return NextResponse.json(
-    { Error: "You are not signed in." },
+    { error: "You are not signed in." },
     { status: 401 }
   );
 }
