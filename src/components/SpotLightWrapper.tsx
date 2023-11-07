@@ -53,7 +53,7 @@ export default function SpotLightWrapper({
         className="pointer-events-none rounded-xl absolute -inset-px opacity-0 transition-colors duration-300 "
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgb(255, 255, 255, 0.1), transparent 35%)`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgb(255, 255, 255, 0.03), transparent 50%)`,
         }}
       />
       {children}
