@@ -79,26 +79,41 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
 
   if (token) {
-    const jsonLike = await streamToJson(req.body);
-    const getLike = getLikesSchema.parse(jsonLike);
+    const { searchParams } = new URL(req.url as string);
+
+    const data = {
+      userPk: +searchParams.get("userPk")!,
+      postPk: +searchParams.get("postPk")!,
+    };
+
+    const getLike = getLikesSchema.parse(data);
     if (getLike.postPk !== null || getLike.userPk !== null) {
       try {
         if (getLike.userPk && !getLike.postPk) {
-        } else {
-          const likes = await db.query.likes.findMany({
-            where: (likes, { eq }) => eq(likes.userPk, 0),
+          const likedPosts = await db.query.likes.findMany({
+            where: (likes, { eq }) => eq(likes.userPk, getLike.userPk!),
+            with: {
+              post: true,
+            },
           });
-        }
-        if (undefined) {
+
           return NextResponse.json(
-            { error: "Post does not exist or already liked." },
-            { status: 400 }
+            { likes: likedPosts, message: "Returned likes of user." },
+            { status: 200 }
+          );
+        } else {
+          const postLikes = await db.query.likes.findMany({
+            where: (likes, { eq }) => eq(likes.postPk, getLike.postPk!),
+            with: {
+              user: true,
+            },
+          });
+
+          return NextResponse.json(
+            { likes: postLikes, message: "Returned likes of post." },
+            { status: 200 }
           );
         }
-        return NextResponse.json(
-          { ...{}, message: "Returned the likes." },
-          { status: 201 }
-        );
       } catch (err) {
         if (err instanceof z.ZodError) {
           return NextResponse.json(

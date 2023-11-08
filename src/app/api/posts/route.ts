@@ -13,7 +13,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
   if (token) {
     const { searchParams } = new URL(req.url as string);
     console.log(searchParams.get("page"));
-    const page = 1;
+    const page = +searchParams.get("page")!;
 
     const limit = 5;
 
