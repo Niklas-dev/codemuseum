@@ -146,3 +146,8 @@ export const insertLikeSchema = createInsertSchema(likes, {
   postPk: (schema) => schema.postPk,
   userPk: (schema) => schema.userPk.optional(),
 });
+
+export const getLikesSchema = createInsertSchema(likes, {
+  postPk: (schema) => schema.postPk.optional(),
+  userPk: (schema) => schema.userPk.optional(),
+});

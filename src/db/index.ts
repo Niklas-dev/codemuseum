@@ -2,6 +2,7 @@ import { MigrationConfig } from "drizzle-orm/migrator";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
+import * as schema from "./schema";
 
 /*
 const migrationConfig: MigrationConfig = {
@@ -19,4 +20,4 @@ migrate(drizzle(migrationClient), migrationConfig);
 const queryClient = postgres(
   "postgres://postgres:postgres@192.168.178.50:5432/codemuseum-db"
 );
-export const db: PostgresJsDatabase = drizzle(queryClient);
+export const db = drizzle(queryClient, { schema });
