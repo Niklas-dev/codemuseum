@@ -42,6 +42,9 @@ export default function NewCodePost({ image }: { image: string }) {
     { value: "Test", label: "Test" },
     { value: "Test2", label: "Test2" },
   ]);
+
+  const createPost = async () => {};
+
   return (
     <div className="h-fit  bg-[#111111] rounded-xl p-6  flex flex-col">
       <form

@@ -22,7 +22,7 @@ export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 
 export const tags = pgTable("tags", {
   pk: serial("pk").notNull(),
-  name: text("name"),
+  name: text("name").primaryKey(),
   logo: text("logo"),
 });
 
@@ -83,11 +83,41 @@ export const postsRelations = relations(posts, ({ one, many }) => ({
     references: [users.pk],
   }),
   likes: many(likes),
+  tagsToPosts: many(tags),
 }));
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
   likes: many(likes),
+}));
+
+export const tagsRelations = relations(tags, ({ many }) => ({
+  tagsToPosts: many(posts),
+}));
+
+export const tagsToPosts = pgTable(
+  "users_to_groups",
+  {
+    tagName: text("tag_name")
+      .notNull()
+      .references(() => tags.name),
+    postPk: integer("post_pk")
+      .notNull()
+      .references(() => posts.pk),
+  },
+  (t) => ({
+    pk: primaryKey(t.tagName, t.postPk),
+  })
+);
+export const tagsToPostsRelations = relations(tagsToPosts, ({ one }) => ({
+  post: one(posts, {
+    fields: [tagsToPosts.postPk],
+    references: [posts.pk],
+  }),
+  tag: one(tags, {
+    fields: [tagsToPosts.tagName],
+    references: [tags.name],
+  }),
 }));
 
 export const accounts = pgTable(

@@ -1,0 +1,1 @@
+ALTER TABLE "users_to_groups" ALTER COLUMN "tag_name" SET DATA TYPE text;
