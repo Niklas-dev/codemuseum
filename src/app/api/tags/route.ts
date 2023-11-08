@@ -13,7 +13,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     return NextResponse.json({ test: dbTags }, { status: 200 });
   }
   return NextResponse.json(
-    { Error: "You are not signed in." },
+    { error: "You are not signed in." },
     { status: 401 }
   );
 }

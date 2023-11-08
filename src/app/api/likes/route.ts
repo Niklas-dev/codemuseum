@@ -70,7 +70,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
   } //improve error handling
 
   return NextResponse.json(
-    { Error: "You are not signed in." },
+    { error: "You are not signed in." },
     { status: 401 }
   );
 }
@@ -135,7 +135,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
   } //improve error handling
 
   return NextResponse.json(
-    { Error: "You are not signed in." },
+    { error: "You are not signed in." },
     { status: 401 }
   );
 }
