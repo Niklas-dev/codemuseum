@@ -18,19 +18,19 @@ export default function ExploreSideBar() {
         </div>
         <ul className="flex flex-col mt-4  text-gray-300 text-lg">
           <Link
-            href={""}
+            href={"/explore/gallery"}
             className="flex flex-row items-center gap-2   hover:bg-[#1a1a1a] border-l-2 border-violet-700 px-6 py-2"
           >
             <FaCode /> Gallery
           </Link>
           <Link
-            href={""}
+            href={"/explore/articles"}
             className="flex flex-row items-center gap-2  hover:bg-[#1a1a1a] px-6 py-2"
           >
             <FaCode /> Articles
           </Link>
           <Link
-            href={""}
+            href={"/explore/community"}
             className="flex flex-row items-center gap-2  hover:bg-[#1a1a1a] px-6 py-2"
           >
             <FaCode /> Community
