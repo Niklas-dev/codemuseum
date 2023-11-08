@@ -96,7 +96,7 @@ export const tagsRelations = relations(tags, ({ many }) => ({
 }));
 
 export const tagsToPosts = pgTable(
-  "users_to_groups",
+  "usersToGroups",
   {
     tagName: text("tag_name")
       .notNull()
