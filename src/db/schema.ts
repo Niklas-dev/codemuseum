@@ -9,7 +9,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
-import { relations } from "drizzle-orm";
+import { InferModel, relations } from "drizzle-orm";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -181,3 +181,5 @@ export const getLikesSchema = createInsertSchema(likes, {
   postPk: (schema) => schema.postPk.optional(),
   userPk: (schema) => schema.userPk.optional(),
 });
+
+export type TagType = typeof tags.$inferSelect;
