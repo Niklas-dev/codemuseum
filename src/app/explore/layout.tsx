@@ -1,4 +1,5 @@
 import ExploreSideBar from "@/components/ExploreSideBar";
+import SearchSideBar from "@/components/SearchSideBar";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaCode, FaNewspaper, FaUserFriends } from "react-icons/fa";
@@ -44,7 +45,7 @@ export default async function ExploreLayout({
         {children}
       </main>
       <div className="w-[18rem] z-20 relative hidden lg:flex">
-        <ExploreSideBar />
+        <SearchSideBar />
       </div>
     </section>
   );
