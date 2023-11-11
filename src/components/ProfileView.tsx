@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-
+import TextareaAutosize from "react-textarea-autosize";
 import Image from "next/image";
 import { useState } from "react";
 export default function ProfileView() {
@@ -11,7 +11,55 @@ export default function ProfileView() {
     <div className="relative h-full w-full z-0">
       {showModal && (
         <div className="absolute flex items-center justify-center h-full w-full bg-opacity-40 bg-black   z-40">
-          <div className="h-[45rem] w-[40rem] bg-red-400 "></div>
+          <div className="h-[45rem] w-[40rem] bg-[#1f1f1f] rounded-2xl p-4 ">
+            <h3 className="text-center text-xl">Edit Profile</h3>
+            <form className="flex flex-col gap-4 mt-4">
+              <div className="flex flex-col gap-1">
+                <label htmlFor="username">Username</label>
+                <input
+                  id="username"
+                  placeholder="Your awesome title"
+                  className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  placeholder="Your awesome title"
+                  className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
+                />
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label htmlFor="firstname">First Name</label>
+                <input
+                  id="firstname"
+                  placeholder="Your awesome title"
+                  className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="lastname">Last Name</label>
+                <input
+                  id="lastname"
+                  placeholder="Your awesome title"
+                  className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="lastname">Biography</label>
+                <TextareaAutosize
+                  minRows={2}
+                  maxRows={6}
+                  spellCheck={false}
+                  cacheMeasurements
+                  placeholder="Your awesome description"
+                  className="px-3 py-1.5 bg-[#181818] rounded-lg  outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       )}
       <div className="px-20 py-8 w-full h-full flex flex-col z-10">
