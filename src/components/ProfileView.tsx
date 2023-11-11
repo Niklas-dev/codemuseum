@@ -24,18 +24,17 @@ export default function ProfileView() {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="name">Name</label>
                   <input
-                    id="email"
+                    id="name"
                     placeholder="Your awesome title"
                     className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
                   />
                 </div>
-
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="location">Location</label>
                   <input
-                    id="name"
+                    id="location"
                     placeholder="Your awesome title"
                     className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
                   />
