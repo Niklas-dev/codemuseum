@@ -1,13 +1,19 @@
-import { getAuthSession } from "@/lib/auth";
+"use client";
+import { useSession } from "next-auth/react";
 
 import Image from "next/image";
-export default async function ProfileView() {
-  const session = await getAuthSession();
+import { useState } from "react";
+export default function ProfileView() {
+  const session = useSession().data;
+
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="relative h-full w-full z-0">
-      <div className="absolute flex items-center justify-center h-full w-full bg-opacity-40 bg-black   z-40">
-        <div className="h-[45rem] w-[40rem] bg-red-400 "></div>
-      </div>
+      {showModal && (
+        <div className="absolute flex items-center justify-center h-full w-full bg-opacity-40 bg-black   z-40">
+          <div className="h-[45rem] w-[40rem] bg-red-400 "></div>
+        </div>
+      )}
       <div className="px-20 py-8 w-full h-full flex flex-col z-10">
         <div className="flex flex-row gap-8">
           <div className="bg-[#161616] w-full h-[35rem] rounded-2xl flex flex-col">
@@ -40,7 +46,10 @@ export default async function ProfileView() {
                   </span>
                 </div>
               </div>
-              <button className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none">
+              <button
+                onClick={() => setShowModal(true)}
+                className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+              >
                 Edit
               </button>
             </div>
