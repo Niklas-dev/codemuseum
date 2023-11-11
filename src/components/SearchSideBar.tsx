@@ -1,14 +1,8 @@
 import { TagType } from "@/db/schema";
-import Link from "next/link";
-import { useState } from "react";
-import {
-  FaChevronDown,
-  FaChevronLeft,
-  FaChevronRight,
-  FaCode,
-} from "react-icons/fa";
+
+import { FaChevronDown } from "react-icons/fa";
 import { cookies } from "next/headers";
-import { db } from "@/db";
+
 export default async function SearchSideBar() {
   const token = cookies().get("next-auth.session-token")?.value!;
 
