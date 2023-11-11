@@ -23,6 +23,7 @@ export const languageShortEnum = pgEnum("language_short", ["py", "js", "ts"]);
 export const tags = pgTable("tags", {
   pk: serial("pk").notNull(),
   name: text("name").primaryKey(),
+  color: text("color"),
   logo: text("logo"),
 });
 
