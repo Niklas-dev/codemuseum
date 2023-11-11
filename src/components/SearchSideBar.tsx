@@ -8,23 +8,34 @@ import {
   FaCode,
 } from "react-icons/fa";
 import { cookies } from "next/headers";
+import { db } from "@/db";
 export default async function SearchSideBar() {
   const token = cookies().get("next-auth.session-token")?.value!;
-  console.log(token);
+
   const getTags = async () => {
-    const dbTags = (await fetch("http://localhost:3000/api/tags", {
+    const response = await fetch("http://localhost:3000/api/tags", {
       method: "GET",
       headers: new Headers({
-        Authorization: token,
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       }),
-    }).then(async (response) => await response.json())) as TagType[];
-    console.log(dbTags);
+    });
 
-    return dbTags;
+    const dbTags = (await response.json()) as TagType[];
+
+    if ("error" in dbTags) {
+      return {
+        dbTags,
+        error: "You are not signed in.",
+      };
+    }
+
+    return {
+      dbTags,
+      error: "",
+    };
   };
 
-  let tags: TagType[] = await getTags();
+  let data = await getTags();
 
   return (
     <div className=" bg-[#0c0c0c] h-full w-72  z-40 rounded-br-xl pb-6">
@@ -33,9 +44,11 @@ export default async function SearchSideBar() {
           <h4 className="text-xl font-medium">Frameworks & Tags</h4>{" "}
         </div>
         <ul className="flex flex-col mt-4  text-gray-300 text-lg">
-          {tags.map((tag) => (
-            <div key={tag.pk}>{tag.name}</div>
-          ))}
+          {!data.error ? (
+            data.dbTags.map((tag) => <div key={tag.pk}>{tag.name}</div>)
+          ) : (
+            <p>{data.error}</p>
+          )}
         </ul>
       </div>
     </div>
