@@ -1,6 +1,5 @@
 import { TagType } from "@/db/schema";
 
-import { FaChevronDown } from "react-icons/fa";
 import { cookies } from "next/headers";
 
 export default async function SearchSideBar() {

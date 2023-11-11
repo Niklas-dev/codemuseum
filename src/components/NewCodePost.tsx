@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { githubDark } from "@uiw/codemirror-theme-github";
 
 import CodeMirror from "@uiw/react-codemirror";
