@@ -33,21 +33,14 @@ export default function ProfileView() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="firstname">First Name</label>
+                  <label htmlFor="name">Name</label>
                   <input
-                    id="firstname"
+                    id="name"
                     placeholder="Your awesome title"
                     className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
                   />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="lastname">Last Name</label>
-                  <input
-                    id="lastname"
-                    placeholder="Your awesome title"
-                    className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
-                  />
-                </div>
+
                 <div className="flex flex-col gap-1">
                   <label htmlFor="lastname">Biography</label>
                   <TextareaAutosize
