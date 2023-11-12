@@ -12,6 +12,7 @@ export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
   const { data } = useSession();
   const pathname = usePathname();
+  const session = useSession().data;
   console.log(pathname);
   return (
     <nav
@@ -62,7 +63,17 @@ export default function NavBar() {
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </div>
         {isOpen && (
-          <div className="fixed top-0 right-0 w-72 h-96  z-0 bg-[#080808] shadow-xl rounded-bl-2xl"></div>
+          <div className="fixed top-0 right-0 w-72 h-96  z-0 bg-[#080808] shadow-xl rounded-bl-2xl">
+            <div className="p-2 flex flex-col  ">
+              <Link
+                href={"/profile"}
+                className="flex flex-row items-center gap-4 bg-[#202020] p-2 rounded-xl"
+              >
+                <ProfilePictureDisplay image={session?.user?.image!} />
+                <p className="text-lg font-medium">Niklas-dev</p>
+              </Link>
+            </div>
+          </div>
         )}
       </div>
     </nav>
