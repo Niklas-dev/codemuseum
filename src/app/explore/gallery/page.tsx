@@ -16,7 +16,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col gap-8 h-fit w-full pb-20">
       <NewCodePost image={session!.user!.image!} />
-      <SpotLightWrapper className="h-fit w-fit">
+      <SpotLightWrapper className="h-fit w-full">
         <CodeCard />
       </SpotLightWrapper>
     </div>

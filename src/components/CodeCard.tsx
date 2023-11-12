@@ -12,7 +12,7 @@ import ProfilePictureDisplay from "./ProfilePictureDisplay";
 export default async function CodeCard() {
   const session = await getAuthSession();
   return (
-    <div className="h-fit  bg-[#111111] rounded-xl p-6  flex flex-col">
+    <div className="h-fit bg-[#111111] rounded-xl p-6  flex flex-col">
       <div className="flex flex-row w-full justify-between items-center">
         <div className="flex flex-row gap-2">
           <ProfilePictureDisplay image={session!.user!.image!} />
