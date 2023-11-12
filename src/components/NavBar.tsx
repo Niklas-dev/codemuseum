@@ -7,6 +7,8 @@ import { MuseoModerno } from "next/font/google";
 import ProfilePictureDisplay from "./ProfilePictureDisplay";
 import { Sling as Hamburger } from "hamburger-react";
 import { useState } from "react";
+
+import { FaLink } from "react-icons/fa";
 const museo = MuseoModerno({ subsets: ["latin"] });
 export default function NavBar() {
   const [isOpen, setOpen] = useState(false);
@@ -63,15 +65,33 @@ export default function NavBar() {
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </div>
         {isOpen && (
-          <div className="fixed top-0 right-0 w-72 h-96  z-0 bg-[#080808] shadow-xl rounded-bl-2xl">
-            <div className="p-2 flex flex-col  ">
+          <div className="fixed top-0 right-0 w-72 h-fit z-0 pb-2 bg-[#080808] shadow-xl rounded-bl-2xl ">
+            <div className="p-2 flex flex-col  gap-4">
               <Link
                 href={"/profile"}
-                className="flex flex-row items-center gap-4 bg-[#202020] p-2 rounded-xl"
+                className="flex flex-row items-center gap-4 bg-[#181818] p-2 rounded-xl group"
               >
                 <ProfilePictureDisplay image={session?.user?.image!} />
-                <p className="text-lg font-medium">Niklas-dev</p>
+                <p className="text-lg font-medium group-hover:underline">
+                  Niklas-dev
+                </p>
               </Link>
+              <nav className="">
+                <ul className="flex flex-col gap-4 text-xl font-medium">
+                  <li className="bg-[#181818] py-2 px-4 rounded-lg flex flex-row gap-4 items-center">
+                    <FaLink size="17px" /> Explore
+                  </li>
+                  <li className="bg-[#181818] py-2 px-4 rounded-lg flex flex-row gap-4 items-center">
+                    <FaLink size="17px" /> Highlights
+                  </li>
+                  <li className="bg-[#181818] py-2 px-4 rounded-lg flex flex-row gap-4 items-center">
+                    <FaLink size="17px" /> Share
+                  </li>
+                  <li className="bg-[#181818] py-2 px-4 rounded-lg flex flex-row gap-4 items-center">
+                    <FaLink size="17px" /> About
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         )}
