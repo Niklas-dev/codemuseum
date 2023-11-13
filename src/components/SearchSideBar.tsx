@@ -32,15 +32,24 @@ export default async function SearchSideBar() {
 
   return (
     <div className=" bg-[#0c0c0c] h-full w-72  z-40 rounded-br-xl pb-6">
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-start items-center pt-6 px-6">
+      <div className="flex flex-col px-6">
+        <div className="flex flex-row justify-start items-center pt-6 ">
           <h4 className="text-xl font-medium">Frameworks & Tags</h4>{" "}
         </div>
-        <ul className="flex flex-col mt-4  text-gray-300 text-lg">
+        <ul className="flex flex-row flex-wrap mt-2  text-gray-300 text-lg ">
           {!data.error ? (
-            data.dbTags.map((tag) => <div key={tag.pk}>{tag.name}</div>)
+            data.dbTags.map((tag) => (
+              <div
+                className={`bg-[${
+                  tag.color ? tag.color : "#ffffff"
+                }] w-fit rounded-lg px-3 h-8 text-black flex flex-row items-center bg-opacity-40`}
+                key={tag.pk}
+              >
+                {tag.name}
+              </div>
+            ))
           ) : (
-            <p>{data.error}</p>
+            <p className="">{data.error}</p>
           )}
         </ul>
       </div>
