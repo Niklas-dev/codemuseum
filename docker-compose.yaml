@@ -31,5 +31,15 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     restart: unless-stopped
 
+  dbeaver:
+    image: dbeaver/dbeaver-ce:latest
+    depends_on:
+      - postgres
+    environment:
+      - DBEAVER_VERSION=21.1.0
+
+    volumes:
+      - ./dbeaver-config:/home/dbeaver/.dbeaver4
+
 volumes:
   postgres-data:
