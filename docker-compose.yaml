@@ -32,12 +32,11 @@ services:
     restart: unless-stopped
 
   dbeaver:
-    image: dbeaver/dbeaver-ce:latest
+    image: dbeaver/cloudbeaver:latest
+    ports:
+      - 8978:8978
     depends_on:
       - postgres
-    environment:
-      - DBEAVER_VERSION=21.1.0
-
     volumes:
       - ./dbeaver-config:/home/dbeaver/.dbeaver4
 
