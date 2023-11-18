@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
-  console.log(token);
+
   if (token) {
     const dbTags = await db.select().from(tags);
 
