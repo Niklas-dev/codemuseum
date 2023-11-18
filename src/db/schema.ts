@@ -60,6 +60,7 @@ export const users = pgTable("user", {
   pk: serial("pk").notNull().primaryKey(),
   id: text("id").notNull().unique(),
   bio: varchar("bio", { length: 255 }),
+  location: varchar("location", { length: 36 }),
   username: text("username").unique(),
   name: text("name"),
   email: text("email").notNull(),
@@ -181,6 +182,13 @@ export const insertLikeSchema = createInsertSchema(likes, {
 export const getLikesSchema = createInsertSchema(likes, {
   postPk: (schema) => schema.postPk.optional(),
   userPk: (schema) => schema.userPk.optional(),
+});
+
+export const updateUserSchema = createInsertSchema(users, {
+  username: (schema) => schema.username.min(1),
+  bio: (schema) => schema.bio.min(1),
+  email: (schema) => schema.email.min(1),
+  name: (schema) => schema.name.min(1),
 });
 
 export type TagType = typeof tags.$inferSelect;
