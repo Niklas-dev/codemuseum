@@ -39,6 +39,7 @@ services:
       - postgres
     volumes:
       - ./dbeaver-config:/home/dbeaver/.dbeaver4
+    restart: unless-stopped
 
 volumes:
   postgres-data:
