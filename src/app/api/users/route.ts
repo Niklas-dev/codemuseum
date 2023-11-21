@@ -30,9 +30,20 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
     try {
       const updateUser = updateUserSchema.parse(jsonPost);
       console.log(updateUser);
+
+      const updatedUser = await db
+        .update(users)
+        .set({
+          name: updateUser.name,
+          username: updateUser.username,
+          bio: updateUser.bio,
+          location: updateUser.location,
+        })
+        .where(eq(users.pk, 1))
+        .returning();
       if (!null) {
         return NextResponse.json(
-          { error: "Failed to create post." },
+          { error: "Failed to update user." },
           { status: 400 }
         );
       }
