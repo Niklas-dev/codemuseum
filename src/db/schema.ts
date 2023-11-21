@@ -108,7 +108,7 @@ export const tagsToPosts = pgTable(
       .references(() => posts.pk),
   },
   (t) => ({
-    pk: primaryKey(t.tagName, t.postPk),
+    pk: primaryKey({ columns: [t.tagName, t.postPk] }),
   })
 );
 export const tagsToPostsRelations = relations(tagsToPosts, ({ one }) => ({
