@@ -10,18 +10,21 @@ dotenv.config();
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: DrizzleAdapter(db) as Adapter,
+  adapter: DrizzleAdapter(db),
   session: {
     strategy: "jwt",
   },
+
   callbacks: {
     async jwt({ token, user }) {
-      console.log(token.email);
-      console.log(user);
+      console.log("token", token);
+      console.log("token", user);
       return token;
     },
     async session({ session, user }) {
-      console.log(user);
+      console.log("session", session);
+      console.log("session", user);
+
       return session;
     },
   },
