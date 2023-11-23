@@ -5,19 +5,24 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
 import * as dotenv from "dotenv";
+import { Adapter } from "next-auth/adapters";
 dotenv.config();
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db) as Adapter,
   session: {
     strategy: "jwt",
   },
   callbacks: {
     async jwt({ token, user }) {
       console.log(token.email);
-
+      console.log(user);
       return token;
+    },
+    async session({ session, user }) {
+      console.log(user);
+      return session;
     },
   },
   providers: [
