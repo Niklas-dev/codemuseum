@@ -27,7 +27,12 @@ export const authOptions: NextAuthOptions = {
           .from(users)
           .where(eq(users.email, email as string))
       )[0];
-      return token;
+
+      console.log("token db", dbUser);
+      return {
+        ...token,
+        ...dbUser,
+      };
     },
     async session({ session, user }) {
       console.log("session", session);
@@ -39,6 +44,8 @@ export const authOptions: NextAuthOptions = {
           .from(users)
           .where(eq(users.email, email as string))
       )[0];
+      session.user = dbUser;
+      console.log("session db", dbUser);
 
       return session;
     },

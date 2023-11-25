@@ -29,7 +29,7 @@ export default function ProfileView() {
               <div className="flex flex-col items-start  ">
                 <h1 className="text-2xl font-medium">{session?.user?.email}</h1>
                 <p className="text-lg text-gray-200 mt-4">
-                  This is a bio about my profile
+                  {session!.user!.bio}
                 </p>
                 <p className="text-lg text-gray-300">🇩🇪 Germany, Kiel</p>
                 <div className="flex flex-row items-center gap-3 text-lg mt-3">
