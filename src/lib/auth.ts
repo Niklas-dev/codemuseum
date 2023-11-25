@@ -3,9 +3,10 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { NextAuthOptions, getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-
+import { eq } from "drizzle-orm";
 import * as dotenv from "dotenv";
 import { Adapter } from "next-auth/adapters";
+import { users } from "@/db/schema";
 dotenv.config();
 
 export const authOptions: NextAuthOptions = {
@@ -19,11 +20,25 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       console.log("token", token);
       console.log("token", user);
+      const email = token.email;
+      const dbUser = (
+        await db
+          .select()
+          .from(users)
+          .where(eq(users.email, email as string))
+      )[0];
       return token;
     },
     async session({ session, user }) {
       console.log("session", session);
       console.log("session", user);
+      const email = session.user!.email;
+      const dbUser = (
+        await db
+          .select()
+          .from(users)
+          .where(eq(users.email, email as string))
+      )[0];
 
       return session;
     },
