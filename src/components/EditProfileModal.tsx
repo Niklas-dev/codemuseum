@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface IFormData {
   username: string;
   name: string;
@@ -19,7 +20,7 @@ export default function EditProfileModal({
     biography: "",
   });
   const updateUser = async () => {};
-
+  const notify = () => toast("Wow so easy!");
   const getUser = async () => {
     const response = await fetch("http://localhost:3000/api/users", {
       method: "GET",
@@ -30,7 +31,11 @@ export default function EditProfileModal({
       console.log(data);
       setFormData(data);
     } else {
-      toast.error("Failed to get user information.");
+      toast("Failed to load user information.", {
+        position: "bottom-center",
+        type: "error",
+        theme: "dark",
+      });
     }
   };
 
@@ -89,7 +94,9 @@ export default function EditProfileModal({
           </div>
           <div className="flex flex-row gap-8 mb-12">
             <button
-              onClick={() => closeModal()}
+              onClick={() => {
+                closeModal();
+              }}
               className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
             >
               Apply
