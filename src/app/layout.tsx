@@ -4,7 +4,7 @@ import "../styles/globals.css";
 import NavBar from "@/components/NavBar";
 import { getAuthSession } from "@/lib/auth";
 import SessionProvider from "@/components/SessionProvider";
-
+import "react-toastify/dist/ReactToastify.css";
 const overpass = Overpass({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

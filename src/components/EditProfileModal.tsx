@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import { ToastContainer, toast } from "react-toastify";
 interface IFormData {
   username: string;
   name: string;
@@ -29,6 +30,7 @@ export default function EditProfileModal({
       console.log(data);
       setFormData(data);
     } else {
+      toast.error("Failed to get user information.");
     }
   };
 
