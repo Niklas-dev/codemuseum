@@ -47,6 +47,11 @@ export default function EditProfileModal({
     console.log(response);
 
     if (response.ok) {
+      toast("Updated user data successfully.", {
+        position: "bottom-center",
+        type: "success",
+        theme: "dark",
+      });
     } else {
       toast("Failed to update user information.", {
         position: "bottom-center",
