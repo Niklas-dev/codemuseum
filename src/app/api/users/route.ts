@@ -11,9 +11,15 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
   console.log(token);
   if (token) {
-    const dbTags = await db.select().from(tags);
+    const email = token.email;
+    const dbUser = (
+      await db
+        .select()
+        .from(users)
+        .where(eq(users.email, email as string))
+    )[0];
 
-    return NextResponse.json(dbTags, { status: 200 });
+    return NextResponse.json(dbUser, { status: 200 });
   }
   return NextResponse.json(
     { error: "You are not signed in." },
