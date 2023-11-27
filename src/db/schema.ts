@@ -61,7 +61,7 @@ export const users = pgTable("user", {
   id: text("id").notNull().unique(),
   bio: varchar("bio", { length: 255 }).default(""),
   location: varchar("location", { length: 36 }).default(""),
-  username: text("username").unique().default("").notNull(),
+  username: text("username").unique().default(""),
   name: text("name").default(""),
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),

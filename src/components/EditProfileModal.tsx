@@ -45,6 +45,15 @@ export default function EditProfileModal({
       body: JSON.stringify(formData),
     });
     console.log(response);
+
+    if (response.ok) {
+    } else {
+      toast("Failed to update user information.", {
+        position: "bottom-center",
+        type: "error",
+        theme: "dark",
+      });
+    }
   };
 
   const getUser = async () => {
@@ -142,9 +151,9 @@ export default function EditProfileModal({
           </div>
           <div className="flex flex-row gap-8 mb-12">
             <button
-              onClick={() => {
-                closeModal();
-              }}
+              onClick={() =>
+                !areObjectsEqual(formData, initialData) && updateUser()
+              }
               className={`${
                 areObjectsEqual(formData, initialData)
                   ? "bg-transparent cursor-not-allowed"
