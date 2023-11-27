@@ -1,4 +1,4 @@
-import { nullToEmptyString } from "@/lib/utils";
+import { areObjectsEqual, nullToEmptyString } from "@/lib/utils";
 import { useEffect, useLayoutEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { ToastContainer, toast } from "react-toastify";
@@ -46,22 +46,6 @@ export default function EditProfileModal({
     });
     console.log(response);
   };
-  function areObjectsEqual(obj1: IFormData, obj2: IFormData): boolean {
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
-
-    if (keys1.length !== keys2.length) {
-      return false;
-    }
-
-    for (const key of keys1) {
-      if (obj1[key] !== obj2[key]) {
-        return false;
-      }
-    }
-
-    return true;
-  }
 
   const getUser = async () => {
     const response = await fetch("http://localhost:3000/api/users", {
