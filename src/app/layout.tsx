@@ -29,7 +29,7 @@ export default async function RootLayout({
             <ToastContainer limit={3} />
           </div>
           <NavBar />
-          <div className="fixed h-full  w-full pointer-events-none noise-background  "></div>
+          <div className="fixed h-full  w-full pointer-events-none noise-background"></div>
           {children}
         </SessionProvider>
       </body>

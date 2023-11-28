@@ -31,7 +31,9 @@ export default function ProfileView() {
                 <p className="text-lg text-gray-200 mt-4">
                   {session!.user!.bio}
                 </p>
-                <p className="text-lg text-gray-300">🇩🇪 Germany, Kiel</p>
+                <p className="text-lg text-gray-300">
+                  {session!.user!.location}
+                </p>
                 <div className="flex flex-row items-center gap-3 text-lg mt-3">
                   <span className="flex flex-row gap-1 text-gray-300 items-center bg-[#222222] px-3 py-2 rounded-xl">
                     <h1 className="text-blue-400 font-bold text-xl">6032 </h1>{" "}
@@ -43,18 +45,20 @@ export default function ProfileView() {
                   </span>
                 </div>
               </div>
-              <button
-                onClick={() => setShowModal(true)}
-                className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => signOut()}
-                className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-              >
-                Logout
-              </button>
+              <div className="flex flex-row gap-2">
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => signOut()}
+                  className="flex cursor-pointer  w-fit items-center rounded-md border-2 border-black bg-violet-700 px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                >
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
           <div className="w-[35rem] bg-[#161616] rounded-2xl"></div>
