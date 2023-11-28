@@ -91,14 +91,6 @@ export default function EditProfileModal({
     }
   };
 
-  useEffect(() => {
-    console.log(formData);
-    console.log(initialData);
-    console.log(areObjectsEqual(formData, initialData));
-
-    return () => {};
-  }, [formData]);
-
   useLayoutEffect(() => {
     getUser();
 
