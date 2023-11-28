@@ -122,7 +122,7 @@ export default function EditProfileModal({
                 onChange={(e) =>
                   setFormData({ ...formData, username: e.target.value })
                 }
-                placeholder="Your awesome title"
+                placeholder="Your awesome username"
                 className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
               />
             </div>
@@ -134,7 +134,7 @@ export default function EditProfileModal({
                   setFormData({ ...formData, name: e.target.value })
                 }
                 value={formData.name}
-                placeholder="Your awesome title"
+                placeholder="Your awesome name"
                 className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
               />
             </div>
@@ -146,14 +146,15 @@ export default function EditProfileModal({
                   setFormData({ ...formData, location: e.target.value })
                 }
                 value={formData.location}
-                placeholder="Your awesome title"
+                placeholder="Your awesome location"
                 className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
               />
             </div>
 
             <div className="flex flex-col gap-1">
-              <label htmlFor="lastname">Biography</label>
+              <label htmlFor="bio">Biography</label>
               <TextareaAutosize
+                id="bio"
                 minRows={2}
                 maxRows={6}
                 spellCheck={false}
@@ -162,7 +163,7 @@ export default function EditProfileModal({
                   setFormData({ ...formData, bio: e.target.value })
                 }
                 value={formData.bio}
-                placeholder="Your awesome description"
+                placeholder="Your awesome bio"
                 className="px-3 py-1.5 bg-[#181818] rounded-lg  outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
               />
             </div>
