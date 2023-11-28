@@ -185,10 +185,10 @@ export const getLikesSchema = createInsertSchema(likes, {
 });
 
 export const updateUserSchema = createInsertSchema(users, {
-  username: (schema) => schema.username.min(1),
-  bio: (schema) => schema.bio.min(1),
-  name: (schema) => schema.name.min(1),
-  location: (schema) => schema.location.min(1),
+  username: (schema) => schema.username.min(0),
+  bio: (schema) => schema.bio.min(0),
+  name: (schema) => schema.name.min(0),
+  location: (schema) => schema.location.min(0),
   email: (schema) => schema.email.optional(),
   id: (schema) => schema.id.optional(),
   image: (schema) => schema.image.optional(),

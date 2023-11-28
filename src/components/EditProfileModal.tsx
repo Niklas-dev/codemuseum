@@ -1,4 +1,4 @@
-import { areObjectsEqual, nullToEmptyString } from "@/lib/utils";
+import { areObjectsEqual, nullToEmptyString, streamToJson } from "@/lib/utils";
 import { useEffect, useLayoutEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { ToastContainer, toast } from "react-toastify";
@@ -44,7 +44,7 @@ export default function EditProfileModal({
       method: "PATCH",
       body: JSON.stringify(formData),
     });
-    console.log(response);
+    console.log(await streamToJson(response.body));
 
     if (response.ok) {
       toast("Updated user data successfully.", {
@@ -52,6 +52,7 @@ export default function EditProfileModal({
         type: "success",
         theme: "dark",
       });
+      closeModal();
     } else {
       toast("Failed to update user information.", {
         position: "bottom-center",
@@ -129,6 +130,9 @@ export default function EditProfileModal({
               <label htmlFor="name">Name</label>
               <input
                 id="name"
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 value={formData.name}
                 placeholder="Your awesome title"
                 className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
@@ -138,6 +142,9 @@ export default function EditProfileModal({
               <label htmlFor="location">Location</label>
               <input
                 id="location"
+                onChange={(e) =>
+                  setFormData({ ...formData, location: e.target.value })
+                }
                 value={formData.location}
                 placeholder="Your awesome title"
                 className="h-12 w-full px-3 py-1.5 bg-[#181818]  rounded-lg outline-none ring-gray-600 focus:ring-1 text-lg"
@@ -151,6 +158,9 @@ export default function EditProfileModal({
                 maxRows={6}
                 spellCheck={false}
                 cacheMeasurements
+                onChange={(e) =>
+                  setFormData({ ...formData, bio: e.target.value })
+                }
                 value={formData.bio}
                 placeholder="Your awesome description"
                 className="px-3 py-1.5 bg-[#181818] rounded-lg  outline-none  ring-gray-600 focus:ring-1 text-lg resize-none"
