@@ -66,7 +66,7 @@ export default function EditProfileModal({
     const response = await fetch("http://localhost:3000/api/users", {
       method: "GET",
     });
-    console.log(response);
+
     if (response.ok) {
       const data: IData = await response.json();
       console.log(data);

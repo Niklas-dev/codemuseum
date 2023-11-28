@@ -31,6 +31,7 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
 
   if (token) {
+    const email = token.email;
     const jsonPost = await streamToJson(req.body);
 
     try {
@@ -45,7 +46,7 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
           bio: updateUser.bio,
           location: updateUser.location,
         })
-        .where(eq(users.pk, 1))
+        .where(eq(users.email, email as string))
         .returning();
       if (!updatedUser) {
         return NextResponse.json(
@@ -53,8 +54,7 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
           { status: 400 }
         );
       }
-      
-      
+
       return NextResponse.json(updatedUser, { status: 201 });
     } catch (err) {
       if (err instanceof z.ZodError) {
