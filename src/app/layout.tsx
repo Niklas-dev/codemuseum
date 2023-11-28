@@ -26,7 +26,7 @@ export default async function RootLayout({
       >
         <SessionProvider session={session}>
           <div className="z-50">
-            <ToastContainer limit={1} />
+            <ToastContainer limit={3} />
           </div>
           <NavBar />
           <div className="fixed h-full  w-full pointer-events-none noise-background  "></div>
