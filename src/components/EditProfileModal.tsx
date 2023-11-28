@@ -44,7 +44,7 @@ export default function EditProfileModal({
       method: "PATCH",
       body: JSON.stringify(formData),
     });
-    console.log(formData);
+    console.log(response);
 
     if (response.ok) {
       toast("Updated user data successfully.", {
@@ -108,7 +108,10 @@ export default function EditProfileModal({
     <div className="absolute flex items-center justify-center h-full w-full bg-opacity-40 bg-black   z-40">
       <div className="h-[45rem] w-[40rem] bg-[#1f1f1f] rounded-2xl p-4 ">
         <h3 className="text-center text-xl">Edit Profile</h3>
-        <form className="flex flex-col justify-between mt-4 h-full">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col justify-between mt-4 h-full"
+        >
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
               <label htmlFor="username">Username</label>

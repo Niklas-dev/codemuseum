@@ -9,7 +9,7 @@ import { streamToJson } from "@/lib/utils";
 
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
-  console.log(token);
+
   if (token) {
     const email = token.email;
     const dbUser = (
@@ -29,13 +29,13 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
 export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
   const token = await getToken({ req });
-  console.log(token);
+
   if (token) {
     const jsonPost = await streamToJson(req.body);
 
     try {
       const updateUser = updateUserSchema.parse(jsonPost);
-      console.log(updateUser);
+      console.log("update data", updateUser);
 
       const updatedUser = await db
         .update(users)
@@ -47,14 +47,15 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
         })
         .where(eq(users.pk, 1))
         .returning();
-      if (!null) {
+      if (!updatedUser) {
         return NextResponse.json(
           { error: "Failed to update user." },
           { status: 400 }
         );
       }
-
-      return NextResponse.json(null, { status: 201 });
+      
+      
+      return NextResponse.json(updatedUser, { status: 201 });
     } catch (err) {
       if (err instanceof z.ZodError) {
         return NextResponse.json(
