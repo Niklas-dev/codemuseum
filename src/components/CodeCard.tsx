@@ -78,17 +78,18 @@ export default async function CodeCard() {
                 alt="avatar"
               />
             </div>
-            <h3 className="text-lg font-medium">+ 20 Likes</h3>
+            <h3 className="text-base sm:text-lg font-medium">+ 20 Likes</h3>
           </div>
-          <div className="flex flex-row gap-4">
-            <button className="flex flex-row items-center text-lg gap-1">
-              <BiHeart size="25px" /> Like
+          <div className="flex flex-row gap-4 text-lg">
+            <button className="flex flex-row items-center gap-1">
+              <BiHeart size="25px" /> <p className="hidden md:block">Like</p>
             </button>
-            <button className="flex flex-row items-center text-lg gap-1">
-              <BiComment size="25px" /> Comments
+            <button className="flex flex-row items-center gap-1">
+              <BiComment size="25px" />{" "}
+              <p className="hidden md:block">Comments</p>
             </button>
-            <button className="flex flex-row items-center text-lg gap-1">
-              <BiShare size="25px" /> Share
+            <button className="flex flex-row items-center gap-1">
+              <BiShare size="25px" /> <p className="hidden md:block">Share</p>
             </button>
           </div>
         </div>
