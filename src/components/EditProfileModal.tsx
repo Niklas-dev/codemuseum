@@ -39,6 +39,7 @@ export default function EditProfileModal({
     location: "",
     bio: "",
   });
+
   const updateUser = async () => {
     const response = await fetch("http://localhost:3000/api/users", {
       method: "PATCH",
@@ -148,7 +149,7 @@ export default function EditProfileModal({
               <TextareaAutosize
                 id="bio"
                 minRows={2}
-                maxRows={6}
+                maxRows={4}
                 spellCheck={false}
                 cacheMeasurements
                 onChange={(e) =>
@@ -167,9 +168,9 @@ export default function EditProfileModal({
               }
               className={`${
                 areObjectsEqual(formData, initialData)
-                  ? "bg-transparent cursor-not-allowed"
+                  ? "cursor-not-allowed bg-transparent "
                   : "bg-violet-700 transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-              } flex cursor-pointer  w-fit items-center rounded-md border-2 border-black  px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] `}
+              } flex cursor-pointer w-fit items-center rounded-md border-2 border-black  px-8 py-2 font-medium shadow-[4px_4px_0px_0px_#171717] `}
             >
               Apply
             </button>
