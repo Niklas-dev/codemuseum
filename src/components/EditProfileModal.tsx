@@ -44,7 +44,7 @@ export default function EditProfileModal({
       method: "PATCH",
       body: JSON.stringify(formData),
     });
-    console.log(response);
+    console.log(formData);
 
     if (response.ok) {
       toast("Updated user data successfully.", {

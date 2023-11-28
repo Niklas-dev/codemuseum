@@ -18,8 +18,6 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, user }) {
-      console.log("token", token);
-      console.log("token", user);
       const email = token.email;
       const dbUser = (
         await db
@@ -28,15 +26,12 @@ export const authOptions: NextAuthOptions = {
           .where(eq(users.email, email as string))
       )[0];
 
-      console.log("token db", dbUser);
       return {
         ...token,
         ...dbUser,
       };
     },
     async session({ session, user }) {
-      console.log("session", session);
-      console.log("session", user);
       const email = session.user!.email;
       const dbUser = (
         await db
@@ -45,7 +40,6 @@ export const authOptions: NextAuthOptions = {
           .where(eq(users.email, email as string))
       )[0];
       session.user = dbUser;
-      console.log("session db", dbUser);
 
       return session;
     },
