@@ -50,7 +50,7 @@ export default async function CodeCard() {
             Lorem ipsum dolor sit amet.
           </p>
         </div>
-        <div className="  h-fit w-full">
+        <div className="h-fit w-full">
           <CodeCardCodeDisplay language="test" code="test" />
         </div>
         <div className=" h-fit flex flex-row items-center justify-between  relative">

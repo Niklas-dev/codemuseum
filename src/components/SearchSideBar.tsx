@@ -36,7 +36,7 @@ export default async function SearchSideBar() {
         <div className="flex flex-row justify-start items-center pt-6 ">
           <h4 className="text-xl font-medium">Frameworks & Tags</h4>{" "}
         </div>
-        <ul className="flex flex-row flex-wrap mt-2  text-gray-300 text-lg ">
+        <div className="flex flex-row flex-wrap mt-2  text-gray-300 text-lg ">
           {!data.error ? (
             data.dbTags.map((tag) => (
               <div
@@ -51,7 +51,7 @@ export default async function SearchSideBar() {
           ) : (
             <p className="">{data.error}</p>
           )}
-        </ul>
+        </div>
       </div>
     </div>
   );
