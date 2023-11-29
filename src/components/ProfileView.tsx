@@ -27,7 +27,9 @@ export default function ProfileView() {
             </div>
             <div className="pt-16 px-10 flex flex-col items-start justify-between flex-grow pb-8">
               <div className="flex flex-col items-start  ">
-                <h1 className="text-2xl font-medium">{session?.user?.email}</h1>
+                <h1 className="text-2xl font-medium">
+                  {session?.user?.username}
+                </h1>
                 <p className="text-lg text-gray-200 mt-4">
                   {session!.user!.bio}
                 </p>
