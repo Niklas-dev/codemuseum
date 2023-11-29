@@ -65,6 +65,10 @@ export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
           { status: 400 }
         );
       }
+      return NextResponse.json(
+        { error: "Username is already used." },
+        { status: 401 }
+      );
       console.error(err);
     }
   }

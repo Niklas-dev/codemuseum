@@ -45,7 +45,6 @@ export default function EditProfileModal({
       method: "PATCH",
       body: JSON.stringify(formData),
     });
-    console.log(await streamToJson(response.body));
 
     if (response.ok) {
       toast("Updated user data successfully.", {
@@ -55,7 +54,8 @@ export default function EditProfileModal({
       });
       closeModal();
     } else {
-      toast("Failed to update user information.", {
+      const data: { error: string } = await response.json();
+      toast(data.error ? data.error : "Failed to load user information.", {
         position: "bottom-center",
         type: "error",
         theme: "dark",
