@@ -30,12 +30,11 @@ export default function ProfileView() {
                 <h1 className="text-2xl font-medium">
                   {session?.user?.username}
                 </h1>
-                <p className="text-lg text-gray-200 mt-4">
-                  {session!.user!.bio}
-                </p>
-                <p className="text-lg text-gray-300">
+
+                <p className="text-lg text-gray-300 mt-4">
                   {session!.user!.location}
                 </p>
+                <p className="text-lg text-gray-200 ">{session!.user!.bio}</p>
                 <div className="flex flex-row items-center gap-3 text-lg mt-3">
                   <span className="flex flex-row gap-1 text-gray-300 items-center bg-[#222222] px-3 py-2 rounded-xl">
                     <h1 className="text-blue-400 font-bold text-xl">6032 </h1>{" "}
