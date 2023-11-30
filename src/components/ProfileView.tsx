@@ -3,12 +3,15 @@ import { signOut, useSession } from "next-auth/react";
 import TextareaAutosize from "react-textarea-autosize";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import EditProfileModal from "./EditProfileModal";
 export default function ProfileView() {
-  let session = useSession().data;
+  const router = useRouter();
+  const { data, update } = useSession();
+  const session = data;
 
   const updateCallback = () => {
-    window.location.reload();
+    update();
   };
 
   const [showModal, setShowModal] = useState(false);
