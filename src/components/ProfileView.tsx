@@ -5,12 +5,21 @@ import Image from "next/image";
 import { useState } from "react";
 import EditProfileModal from "./EditProfileModal";
 export default function ProfileView() {
-  const session = useSession().data;
+  let session = useSession().data;
+
+  const updateCallback = () => {
+    window.location.reload();
+  };
 
   const [showModal, setShowModal] = useState(false);
   return (
     <div className="relative h-full w-full z-0">
-      {showModal && <EditProfileModal closeModal={() => setShowModal(false)} />}
+      {showModal && (
+        <EditProfileModal
+          updateCallback={() => updateCallback()}
+          closeModal={() => setShowModal(false)}
+        />
+      )}
       <div className="px-20 py-8 w-full h-full flex flex-col z-10">
         <div className="flex flex-row gap-8">
           <div className="bg-[#161616] w-full h-[35rem] rounded-2xl flex flex-col">

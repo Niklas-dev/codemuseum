@@ -23,8 +23,10 @@ interface IData {
   image: string;
 }
 export default function EditProfileModal({
+  updateCallback,
   closeModal,
 }: {
+  updateCallback: () => void;
   closeModal: () => void;
 }) {
   const [initialData, setInitialData] = useState<IFormData>({
@@ -52,6 +54,7 @@ export default function EditProfileModal({
         type: "success",
         theme: "dark",
       });
+      updateCallback();
       closeModal();
     } else {
       const data: { error: string } = await response.json();
