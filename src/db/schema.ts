@@ -46,10 +46,10 @@ export const likes = pgTable(
 
 export const posts = pgTable("post", {
   pk: serial("pk").notNull().primaryKey(),
-  title: text("title"),
-  code: text("code"),
-  language: languageEnum("language"),
-  language_short: languageShortEnum("language_short"),
+  title: text("title").notNull(),
+  code: text("code").notNull(),
+  language: languageEnum("language").notNull(),
+  language_short: languageShortEnum("language_short").notNull(),
   likes: integer("likes"),
   authorId: integer("author_id")
     .notNull()
