@@ -69,7 +69,9 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     } catch (err) {
       if (err instanceof z.ZodError) {
         return NextResponse.json(
-          err.issues.map((issue) => Object({ error: issue.message })),
+          err.issues.map((issue) =>
+            Object({ error: issue.message, field: issue.path[0] })
+          ),
           { status: 400 }
         );
       }

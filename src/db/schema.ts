@@ -13,6 +13,18 @@ import { InferModel, relations } from "drizzle-orm";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
+const randomUUID = (length: number = 10) => {
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let username = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    username += characters.charAt(randomIndex);
+  }
+
+  return username;
+};
 export const languageEnum = pgEnum("language", [
   "python",
   "javascript",
@@ -61,7 +73,10 @@ export const users = pgTable("user", {
   id: text("id").notNull().unique(),
   bio: varchar("bio", { length: 255 }).default(""),
   location: varchar("location", { length: 36 }).default(""),
-  username: text("username").unique().default(""),
+  username: text("username")
+    .unique()
+    .default("")
+    .$defaultFn(() => randomUUID()),
   name: text("name").default(""),
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
