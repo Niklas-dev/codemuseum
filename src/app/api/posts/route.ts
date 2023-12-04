@@ -36,6 +36,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 
     try {
       const newPost = insertPostSchema.parse(jsonPost);
+      console.log(newPost);
       const dbUser = (
         await db
           .select()

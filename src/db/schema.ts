@@ -167,8 +167,8 @@ export const verificationTokens = pgTable(
 // zod schemas
 
 export const insertPostSchema = createInsertSchema(posts, {
-  title: (schema) => schema.title,
-  code: (schema) => schema.code,
+  title: (schema) => schema.title.min(1),
+  code: (schema) => schema.code.min(1),
   language: (schema) => schema.language,
   language_short: (schema) => schema.language_short,
   authorId: (schema) => schema.authorId.optional(),
