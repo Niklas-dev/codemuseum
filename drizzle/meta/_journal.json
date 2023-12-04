@@ -365,6 +365,20 @@
       "when": 1701719291983,
       "tag": "0051_living_doomsday",
       "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "5",
+      "when": 1701719537488,
+      "tag": "0052_icy_squadron_sinister",
+      "breakpoints": true
+    },
+    {
+      "idx": 53,
+      "version": "5",
+      "when": 1701719669922,
+      "tag": "0053_nosy_mandroid",
+      "breakpoints": true
     }
   ]
 }
