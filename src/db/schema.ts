@@ -75,7 +75,7 @@ export const users = pgTable("user", {
   bio: varchar("bio", { length: 255 }).default(
     "Hey, I haven't set my bio yet."
   ),
-  location: varchar("location", { length: 36 }).default("Not here"),
+  location: varchar("location", { length: 36 }).default(""),
   username: text("username")
     .default(sql`gen_random_uuid()`)
     .unique(),
