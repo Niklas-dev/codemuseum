@@ -55,7 +55,6 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
             language_short: newPost.language_short,
           })
           .returning()
-          .onConflictDoNothing()
       )[0];
 
       if (!dbPost) {
