@@ -9,7 +9,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
-import { InferModel, relations } from "drizzle-orm";
+import { InferModel, relations, sql } from "drizzle-orm";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -22,6 +22,7 @@ const randomUUID = (length: number = 10) => {
     const randomIndex = Math.floor(Math.random() * characters.length);
     username += characters.charAt(randomIndex);
   }
+  console.log(username);
 
   return username;
 };
@@ -52,7 +53,7 @@ export const likes = pgTable(
       .references(() => users.pk),
   },
   (like) => ({
-    compoundKey: primaryKey(like.userPk, like.postPk),
+    compoundKey: primaryKey({ columns: [like.userPk, like.postPk] }),
   })
 );
 
@@ -71,12 +72,13 @@ export const posts = pgTable("post", {
 export const users = pgTable("user", {
   pk: serial("pk").notNull().primaryKey(),
   id: text("id").notNull().unique(),
-  bio: varchar("bio", { length: 255 }).default(""),
-  location: varchar("location", { length: 36 }).default(""),
+  bio: varchar("bio", { length: 255 }).default(
+    "Hey, I haven't set my bio yet."
+  ),
+  location: varchar("location", { length: 36 }).default("Not here"),
   username: text("username")
-    .unique()
-    .default("")
-    .$defaultFn(() => randomUUID()),
+    .default(sql`gen_random_uuid()`)
+    .unique(),
   name: text("name").default(""),
   email: text("email").notNull(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),

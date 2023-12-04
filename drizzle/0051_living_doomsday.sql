@@ -1,0 +1,1 @@
+ALTER TABLE "user" ALTER COLUMN "username" SET DEFAULT gen_random_uuid();
